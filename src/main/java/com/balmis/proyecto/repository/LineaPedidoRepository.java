@@ -1,7 +1,6 @@
 package com.balmis.proyecto.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +10,6 @@ import com.balmis.proyecto.model.LineaPedido;
 
 public interface LineaPedidoRepository extends JpaRepository<LineaPedido, Integer> {
 
-    Optional<LineaPedido> findByDescrip(String titulo);
-    
     // Buscar - Todos
     @Query(value = "SELECT * FROM lineas_pedido", nativeQuery = true)
     List<LineaPedido> findSqlAll();
