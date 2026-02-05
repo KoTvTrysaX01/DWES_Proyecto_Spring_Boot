@@ -1,5 +1,5 @@
 package com.balmis.proyecto.service;
 
-public class UserService {
+public class UsuarioService {
     
 }

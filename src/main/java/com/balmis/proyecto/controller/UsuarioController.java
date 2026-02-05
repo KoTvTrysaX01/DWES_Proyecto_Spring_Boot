@@ -1,5 +1,5 @@
 package com.balmis.proyecto.controller;
 
-public class UserController {
+public class UsuarioController {
     
 }
