@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS productos(
     id          INT AUTO_INCREMENT PRIMARY KEY,
     nombre      VARCHAR(50) UNIQUE NOT NULL,
     descripcion VARCHAR(200),
-    precio      DECIMAL(5,2) NOT NULL,
-    stock       BOOLEAN,
+    precio      DECIMAL NOT NULL,
+    stock       BOOLEAN NOT NULL,
     imagen      VARCHAR(100),
     categoria_id INT,
     FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE SET NULL
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS users_security (
     CREATE TABLE IF NOT EXISTS pedidos(
     id              INT AUTO_INCREMENT PRIMARY KEY,
     pedido          VARCHAR(300) NOT NULL,
-    precio_total    DECIMAL(5,2) NOT NULL,
+    precio_total    DECIMAL NOT NULL,
     tel             VARCHAR(10) NOT NULL,
     direccion       VARCHAR(150) NOT NULL,
     pedido_date     DATE NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS mensajes(
     id          INT AUTO_INCREMENT PRIMARY KEY,
     titulo      VARCHAR(30) NOT NULL,
     mensaje     VARCHAR(300) NOT NULL,
-    email       VARCHAR(50) NOT NULL,
+    email       VARCHAR(100) NOT NULL,
     post_date   DATE NOT NULL    
 );
 
