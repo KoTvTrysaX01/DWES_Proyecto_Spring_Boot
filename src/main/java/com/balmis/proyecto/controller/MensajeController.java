@@ -79,7 +79,7 @@ public class MensajeController {
         }
     }
 
-    // http://localhost:8080/proyecto/categorias/mayor/7
+    // http://localhost:8080/proyecto/mensajes/mayor/7
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener mensajes mayores de un ID",
@@ -96,7 +96,7 @@ public class MensajeController {
     }
 
 
-        // http://localhost:8080/proyecto/categorias/count
+        // http://localhost:8080/proyecto/mensajes/count
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener el número de mensajes existentes",
@@ -151,9 +151,10 @@ public class MensajeController {
                     .body(map);
         } else {
 
-            if (mensaje.getCategoria() == null || mensaje.getCategoria().trim().isEmpty()
-                    || mensaje.getDescripcion() == null || mensaje.getDescripcion().trim().isEmpty()
-                    || mensaje.getImagen() == null || mensaje.getImagen().trim().isEmpty()
+            if (mensaje.getTitulo() == null || mensaje.getTitulo().trim().isEmpty()
+                    || mensaje.getMensaje() == null || mensaje.getMensaje().trim().isEmpty()
+                    || mensaje.getEmail() == null || mensaje.getEmail().trim().isEmpty()
+                    || mensaje.getPost_date() == null
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
@@ -168,7 +169,7 @@ public class MensajeController {
 
                 Map<String, Object> map = new HashMap<>();
                 map.put("mensaje", "Mensaje creado con éxito");
-                map.put("insertCategoria", mensajePost);
+                map.put("insertMensaje", mensajePost);
 
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
@@ -193,7 +194,7 @@ public class MensajeController {
     })
     // ***************************************************************************    
     @PutMapping("")
-    public ResponseEntity<Map<String, Object>> updateCategoria(
+    public ResponseEntity<Map<String, Object>> updateMensaje(
             @Valid @RequestBody Mensaje mensajeUpdate) {
 
         ResponseEntity<Map<String, Object>> response;
@@ -216,21 +217,24 @@ public class MensajeController {
             } else {
 
                 // Actualizar campos si están presentes
-                if (mensajeUpdate.getCategoria() != null) {
-                    existingMensaje.setCategoria(mensajeUpdate.getCategoria());
+                if (mensajeUpdate.getTitulo() != null) {
+                    existingMensaje.setTitulo(mensajeUpdate.getTitulo());
                 }
-                if (mensajeUpdate.getDescripcion() != null) {
-                    existingMensaje.setDescripcion(mensajeUpdate.getDescripcion());
+                if (mensajeUpdate.getMensaje() != null) {
+                    existingMensaje.setMensaje(mensajeUpdate.getMensaje());
                 }
-                if (mensajeUpdate.getImagen() != null) {
-                    existingMensaje.setImagen(mensajeUpdate.getImagen());
-                }                
+                if (mensajeUpdate.getEmail() != null) {
+                    existingMensaje.setEmail(mensajeUpdate.getEmail());
+                }
+                if (mensajeUpdate.getPost_date() != null) {
+                    existingMensaje.setPost_date(mensajeUpdate.getPost_date());
+                }              
 
                 Mensaje mensajePut = mensajeService.save(existingMensaje);
 
                 Map<String, Object> map = new HashMap<>();
                 map.put("mensaje", "Mensaje actualizado con éxito");
-                map.put("updatedCategoria", mensajePut);
+                map.put("updatedMensaje", mensajePut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);
             }
@@ -253,7 +257,7 @@ public class MensajeController {
     })
     // ***************************************************************************    
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteCategoria(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> deleteMensaje(@PathVariable int id) {
 
         ResponseEntity<Map<String, Object>> response;
 
@@ -270,7 +274,7 @@ public class MensajeController {
 
             Map<String, Object> map = new HashMap<>();
             map.put("mensaje", "Mensaje eliminado con éxito");
-            map.put("deletedUser", existingMensaje);
+            map.put("deletedMensaje", existingMensaje);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }

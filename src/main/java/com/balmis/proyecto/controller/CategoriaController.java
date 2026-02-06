@@ -137,7 +137,7 @@ public class CategoriaController {
     })
     // ***************************************************************************
     @PostMapping("")
-    public ResponseEntity<Map<String, Object>> createUser(
+    public ResponseEntity<Map<String, Object>> createCategoria(
             @Valid @RequestBody Categoria categoria) {
 
         ResponseEntity<Map<String, Object>> response;
@@ -270,7 +270,7 @@ public class CategoriaController {
 
             Map<String, Object> map = new HashMap<>();
             map.put("mensaje", "Categoria eliminada con éxito");
-            map.put("deletedUser", existingCategoria);
+            map.put("deletedCategoria", existingCategoria);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }

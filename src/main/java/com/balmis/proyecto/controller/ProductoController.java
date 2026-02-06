@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.balmis.proyecto.model.Pedido;
-import com.balmis.proyecto.service.PedidoService;
+import com.balmis.proyecto.model.Producto;
+import com.balmis.proyecto.service.ProductoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,92 +26,92 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "pedidos", description = "API para gestión de pedidos")
+@Tag(name = "productos", description = "API para gestión de productos")
 @RestController
-@RequestMapping("/pedidos")
-public class PedidoController {
+@RequestMapping("/productos")
+public class ProductoController {
     
 
     @Autowired
-    private PedidoService pedidoService;
+    private ProductoService productoService;
 
     // ***************************************************************************
     // CONSULTAS
     // ***************************************************************************
-    // http://localhost:8080/proyecto/pedidos
+    // http://localhost:8080/proyecto/productos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener todos los pedidos",
-            description = "Retorna una lista con todos los pedidos disponibles")
+    @Operation(summary = "Obtener todos los productos",
+            description = "Retorna una lista con todos los productos disponibles")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "pedidos obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "productos obtenidos con éxito")
     })
     // ***************************************************************************    
     @GetMapping("")
-    public ResponseEntity<List<Pedido>> showpedidos() {
+    public ResponseEntity<List<Producto>> showproductos() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(pedidoService.findAll());
+                .body(productoService.findAll());
     }
 
-    // http://localhost:8080/proyecto/pedidos/2
+    // http://localhost:8080/proyecto/productos/2
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener Pedido por ID",
-            description = "Retorna un Pedido especifico basado en su ID")
+    @Operation(summary = "Obtener Producto por ID",
+            description = "Retorna un Producto especifico basado en su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Pedido encontrado"),
-        @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())
+        @ApiResponse(responseCode = "200", description = "Producto encontrado"),
+        @ApiResponse(responseCode = "404", description = "Producto no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @GetMapping("/{id}")
-    public ResponseEntity<Pedido> detailsPedido(@PathVariable int id) {
-        Pedido Pedido = pedidoService.findById(id);
+    public ResponseEntity<Producto> detailsProducto(@PathVariable int id) {
+        Producto producto = productoService.findById(id);
 
-        if (Pedido == null) {
+        if (producto == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(null);  // 404 Not Found
         } else {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(Pedido);
+                    .body(producto);
         }
     }
 
-    // http://localhost:8080/proyecto/pedidos/mayor/7
+    // http://localhost:8080/proyecto/productos/mayor/7
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener pedidos mayores de un ID",
-            description = "Retorna una lista con todos los pedidos con ID mayor que un valor")
+    @Operation(summary = "Obtener productos mayores de un ID",
+            description = "Retorna una lista con todos los productos con ID mayor que un valor")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "pedidos obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "productos obtenidos con éxito")
     })
     // ***************************************************************************    
     @GetMapping("/mayor/{id}")
-    public ResponseEntity<List<Pedido>> showpedidosMayores(@PathVariable int id) {
+    public ResponseEntity<List<Producto>> showproductosMayores(@PathVariable int id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(pedidoService.findByIdGrThan(id));
+                .body(productoService.findByIdGrThan(id));
     }
 
 
-        // http://localhost:8080/proyecto/pedidos/count
+        // http://localhost:8080/proyecto/productos/count
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener el número de pedidos existentes",
-            description = "Retorna la cantidad de pedidos")
+    @Operation(summary = "Obtener el número de productos existentes",
+            description = "Retorna la cantidad de productos")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Número de pedidos obtenidos con éxito", content = @Content())
+        @ApiResponse(responseCode = "200", description = "Número de productos obtenidos con éxito", content = @Content())
     })
     // ***************************************************************************    
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countpedidos() {
+    public ResponseEntity<Map<String, Object>> countproductos() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
         Map<String, Object> map = new HashMap<>();
-        map.put("pedidos", pedidoService.count());
+        map.put("productos", productoService.count());
 
         response = ResponseEntity
                 .status(HttpStatus.OK)
@@ -126,23 +126,23 @@ public class PedidoController {
     // ***************************************************************************
     // ****************************************************************************
     // INSERT (POST)    
-    // http://localhost:8080/proyecto/pedidos
+    // http://localhost:8080/proyecto/productos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Crear una nueva Pedido",
-            description = "Registra una nueva Pedido en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear una nueva producto",
+            description = "Registra una nueva producto en el sistema con los datos proporcionados")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Pedido creada con éxito", content = @Content()),
+        @ApiResponse(responseCode = "201", description = "Producto creada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
     })
     // ***************************************************************************
     @PostMapping("")
-    public ResponseEntity<Map<String, Object>> createPedido(
-            @Valid @RequestBody Pedido pedido) {
+    public ResponseEntity<Map<String, Object>> createProducto(
+            @Valid @RequestBody Producto producto) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        if (pedido == null) {
+        if (producto == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "El cuerpo de la solicitud no puede estar vacío");
 
@@ -151,27 +151,25 @@ public class PedidoController {
                     .body(map);
         } else {
 
-            if (pedido.getPedido() == null || pedido.getPedido().trim().isEmpty()
-                    || pedido.getPrecio_total() == null
-                    || pedido.getTel() == null || pedido.getTel().trim().isEmpty()
-                    || pedido.getDireccion() == null || pedido.getDireccion().trim().isEmpty()
-                    || pedido.getPedido_date() == null
-                    || pedido.getUsuario() == null
+            if (producto.getNombre() == null || producto.getNombre().trim().isEmpty()
+                    || producto.getDescripcion() == null || producto.getDescripcion().trim().isEmpty()
+                    || producto.getPrecio() == null
+                    || producto.getCategoria() == null
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'Pedido' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'Producto' y 'descripcion' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
                         .body(map);
             } else {
-                System.out.println(pedido);
-                Pedido PedidoPost = pedidoService.save(pedido);
+                System.out.println(producto);
+                Producto productoPost = productoService.save(producto);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Pedido creada con éxito");
-                map.put("insertPedido", PedidoPost);
+                map.put("mensaje", "Producto creada con éxito");
+                map.put("insertProducto", productoPost);
 
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
@@ -184,65 +182,63 @@ public class PedidoController {
 
         // ****************************************************************************
     // UPDATE (PUT)
-    // http://localhost:8080/proyecto/pedidos
+    // http://localhost:8080/proyecto/productos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Actualizar un Pedido existente",
-            description = "Reemplaza completamente los datos de unu Pedido identificado por su ID")
+    @Operation(summary = "Actualizar un Producto existente",
+            description = "Reemplaza completamente los datos de unu Producto identificado por su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Pedido actualizado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "201", description = "Producto actualizado con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())
+        @ApiResponse(responseCode = "404", description = "Producto no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @PutMapping("")
-    public ResponseEntity<Map<String, Object>> updatePedido(
-            @Valid @RequestBody Pedido pedidoUpdate) {
+    public ResponseEntity<Map<String, Object>> updateProducto(
+            @Valid @RequestBody Producto productoUpdate) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        if (pedidoUpdate == null) {
+        if (productoUpdate == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "El cuerpo de la solicitud no puede estar vacío");
 
             response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(map);
         } else {
-            int id = pedidoUpdate.getId();
-            Pedido existingPedido = pedidoService.findById(id);
+            int id = productoUpdate.getId();
+            Producto existingProducto = productoService.findById(id);
 
-            if (existingPedido == null) {
+            if (existingProducto == null) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Pedido no encontrado");
+                map.put("error", "Producto no encontrado");
                 map.put("id", id);
 
                 response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
             } else {
 
                 // Actualizar campos si están presentes
-                if (pedidoUpdate.getPedido() != null) {
-                    existingPedido.setPedido(pedidoUpdate.getPedido());
+                if (productoUpdate.getNombre() != null) {
+                    existingProducto.setNombre(productoUpdate.getNombre());
                 }
-                if (pedidoUpdate.getPrecio_total() != null) {
-                    existingPedido.setPrecio_total(pedidoUpdate.getPrecio_total());
+                if (productoUpdate.getDescripcion() != null) {
+                    existingProducto.setDescripcion(productoUpdate.getDescripcion());
                 }
-                if (pedidoUpdate.getTel() != null) {
-                    existingPedido.setTel(pedidoUpdate.getTel());
+                if (productoUpdate.getPrecio() != null) {
+                    existingProducto.setPrecio(productoUpdate.getPrecio());
                 }
-                if (pedidoUpdate.getDireccion() != null) {
-                    existingPedido.setDireccion(pedidoUpdate.getDireccion());
+                existingProducto.setStock(productoUpdate.isStock());
+                if (productoUpdate.getImagen() != null) {
+                    existingProducto.setImagen(productoUpdate.getImagen());
                 }
-                if (pedidoUpdate.getPedido_date() != null) {
-                    existingPedido.setPedido_date(pedidoUpdate.getPedido_date());
-                }
-                if (pedidoUpdate.getUsuario() != null) {
-                    existingPedido.setUsuario(pedidoUpdate.getUsuario());
+                if (productoUpdate.getCategoria() != null) {
+                    existingProducto.setCategoria(productoUpdate.getCategoria());
                 }              
 
-                Pedido pedidoPut = pedidoService.save(existingPedido);
+                Producto productoPut = productoService.save(existingProducto);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Pedido actualizada con éxito");
-                map.put("updatedPedido", pedidoPut);
+                map.put("mensaje", "Producto actualizada con éxito");
+                map.put("updatedProducto", productoPut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);
             }
@@ -254,41 +250,38 @@ public class PedidoController {
 
     // ****************************************************************************
     // DELETE
-    // http://localhost:8080/proyecto/pedidos/16
+    // http://localhost:8080/proyecto/productos/16
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Eliminar Pedido por ID",
-            description = "Elimina un Pedido especifico del sistema")
+    @Operation(summary = "Eliminar producto por ID",
+            description = "Elimina un producto especifico del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Pedido eliminado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())
+        @ApiResponse(responseCode = "201", description = "Producto eliminado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "404", description = "Producto no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deletePedido(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> deleteProducto(@PathVariable int id) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        Pedido existingPedido = pedidoService.findById(id);
-        if (existingPedido == null) {
+        Producto existingProducto = productoService.findById(id);
+        if (existingProducto == null) {
             Map<String, Object> map = new HashMap<>();
-            map.put("error", "Pedido no encontrado");
+            map.put("error", "Producto no encontrado");
             map.put("id", id);
 
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
         } else {
 
-            pedidoService.deleteById(id);
+            productoService.deleteById(id);
 
             Map<String, Object> map = new HashMap<>();
-            map.put("mensaje", "Pedido eliminado con éxito");
-            map.put("deletedPedido", existingPedido);
+            map.put("mensaje", "Producto eliminado con éxito");
+            map.put("deletedProducto", existingProducto);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }
         return response;
     }
 }
-
-
-
