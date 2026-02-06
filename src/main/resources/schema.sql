@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS categorias(
     id          INT AUTO_INCREMENT PRIMARY KEY,
     categoria   VARCHAR(50) UNIQUE NOT NULL,
-    descripcion VARCHAR(200),
+    descripcion VARCHAR(200) NOT NULL,
     imagen      VARCHAR(100)
 );
 
