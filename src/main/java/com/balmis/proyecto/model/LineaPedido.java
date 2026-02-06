@@ -42,6 +42,7 @@ public class LineaPedido implements Serializable {
     private Producto producto;
 
     @Schema(description = "Cantidad del producto del pedido", example = "1")
+    @Min(value = 1, message = "La cantidad mínima es 1")
     @Column(name = "cantidad", nullable = false, unique = false)
     private int cantidad;
 

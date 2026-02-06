@@ -12,7 +12,7 @@ import com.balmis.proyecto.model.Mensaje;
 public interface MensajeRepository extends JpaRepository<Mensaje, Integer> {
     
 
-    Optional<Mensaje> findByDescrip(String titulo);
+    // Optional<Mensaje> findByDescrip(String titulo);
     
     // Buscar - Todos
     @Query(value = "SELECT * FROM mensajes", nativeQuery = true)

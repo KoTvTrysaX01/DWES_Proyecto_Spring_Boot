@@ -3,11 +3,13 @@ package com.balmis.proyecto.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.balmis.proyecto.model.Mensaje;
 import com.balmis.proyecto.repository.MensajeRepository;
 
+@Service
 public class MensajeService {
     @Autowired
     public MensajeRepository mensajeRepository;

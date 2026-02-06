@@ -12,7 +12,7 @@ import com.balmis.proyecto.model.Producto;
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     
 
-    Optional<Producto> findByDescrip(String descripcion);
+    // Optional<Producto> findByDescrip(String descripcion);
     
     // Buscar - Todos
     @Query(value = "SELECT * FROM productos", nativeQuery = true)
