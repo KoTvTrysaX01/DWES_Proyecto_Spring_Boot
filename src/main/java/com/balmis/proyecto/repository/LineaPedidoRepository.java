@@ -16,13 +16,13 @@ public interface LineaPedidoRepository extends JpaRepository<LineaPedido, Intege
     
     // Buscar - Por ID de Pedido
     @Query(value = "SELECT * FROM lineas_pedido WHERE id_producto = :id_pedido", nativeQuery = true)
-    LineaPedido findSqlByIdPedido(@Param("id_pedido") int id_pedido);
+    List<LineaPedido> findSqlByIdPedido(@Param("id_pedido") int id_pedido);
 
     // Buscar - Por ID de Producto
     @Query(value = "SELECT * FROM lineas_pedido WHERE id_producto = :id_producto", nativeQuery = true)
-    LineaPedido findSqlByIdProducto(@Param("id_producto") int id_producto);
+    List<LineaPedido> findSqlByIdProducto(@Param("id_producto") int id_producto);
 
     // Buscar - Contar todos
-    @Query(value = "SELECT COUNT(*) as lineas_pedido FROM categorias", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) as lineas_pedido FROM lineas_pedido", nativeQuery = true)
     Long countSql();    
 }

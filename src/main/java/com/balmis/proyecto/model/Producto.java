@@ -1,6 +1,11 @@
 package com.balmis.proyecto.model;
 
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,11 +19,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
-import java.math.BigDecimal;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -63,6 +63,7 @@ public class Producto implements Serializable{
     private BigDecimal precio;
 
     @Schema(description = "El stock del producto", example = "true")
+    @NotBlank(message = "El stock es obligatoria")
     @Column(name = "stock", nullable = false, unique = false)
     private boolean stock;
 

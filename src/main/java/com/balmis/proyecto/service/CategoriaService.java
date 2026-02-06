@@ -59,6 +59,9 @@ public class CategoriaService {
         if (categoriaDetails.getDescripcion()  != null) {
             categoria.setDescripcion(categoriaDetails.getDescripcion());
         }
+        if (categoriaDetails.getImagen()  != null) {
+            categoria.setImagen(categoriaDetails.getImagen());
+        }
         
         return categoriaRepository.save(categoria);
     }
