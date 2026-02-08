@@ -63,7 +63,6 @@ public class Producto implements Serializable{
     private BigDecimal precio;
 
     @Schema(description = "El stock del producto", example = "true")
-    @NotBlank(message = "El stock es obligatoria")
     @Column(name = "stock", nullable = false, unique = false)
     private boolean stock;
 

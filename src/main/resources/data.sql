@@ -27,9 +27,9 @@ INSERT INTO users_security (id, username, email, password, administrador, usuari
 -- ALTER TABLE users_security ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM users_security);
 
 
-INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (1, '1-ice_cream x 3-ice_cream', 12.97, '123456789', 'Mi direccion', '01-12-2015', 1);
-INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (2, '1-smoothie x 2-milkshake', 43.77, '123456789', 'Mi direccion', '01-12-2015', 2);
-INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (3, '2-milkshake x 3-ice_cream', 5.99, '123456789', 'Mi direccion', '01-12-2015', 3);
+INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (1, '1-ice_cream x 3-ice_cream', 12.97, '123456789', 'Mi direccion', '2015-12-01', 1);
+INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (2, '1-smoothie x 2-milkshake', 43.77, '123456789', 'Mi direccion', '2015-12-01', 2);
+INSERT INTO pedidos (id, pedido, precio_total, tel, direccion, pedido_date, user_id) VALUES (3, '2-milkshake x 3-ice_cream', 5.99, '123456789', 'Mi direccion', '2015-12-01', 3);
 
 -- ALTER TABLE pedidos ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM pedidos);
 
@@ -45,8 +45,8 @@ INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 
 -- ALTER TABLE lineas_pedido ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM lineas_pedido);
 
 
-INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (1, '1-Titulo', 'Mi1 Mensaje', 'example@gmail.com', '01-11-2025');
-INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (2, '2-Titulo', 'Mi2 Mensaje', 'example@gmail.com', '01-11-2025');
-INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (3, '3-Titulo', 'Mi3 Mensaje', 'example@gmail.com', '01-11-2025');
+INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (1, '1-Titulo', 'Mi1 Mensaje', 'example@gmail.com', '2025-11-01');
+INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (2, '2-Titulo', 'Mi2 Mensaje', 'example@gmail.com', '2025-11-01');
+INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (3, '3-Titulo', 'Mi3 Mensaje', 'example@gmail.com', '2025-11-01');
 
 -- ALTER TABLE mensajes ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM mensajes);

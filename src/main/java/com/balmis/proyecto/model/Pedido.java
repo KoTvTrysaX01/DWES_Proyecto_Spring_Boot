@@ -1,5 +1,11 @@
 package com.balmis.proyecto.model;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,11 +19,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
-import java.sql.Date;
-import java.math.BigDecimal;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -68,8 +69,7 @@ public class Pedido implements Serializable{
     @Column(name = "direccion", nullable = false, unique = false) 
     private String direccion;
 
-    @Schema(description = "Fecha del pedido", example = "01-11-2015")
-    @NotBlank(message = "La fecha es obligatorio")
+    @Schema(description = "Fecha del pedido", example = "2015-01-11")
     @Column(name = "pedido_date", nullable = false, unique = false)
     private Date pedido_date;
 

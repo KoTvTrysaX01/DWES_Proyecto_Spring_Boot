@@ -11,17 +11,17 @@ import io.swagger.v3.oas.models.info.License;
 @Configuration
 public class OpenApiConfig {
     
-    // http://localhost:8080/proyecto
-    // http://localhost:8080/proyecto/swagger-ui.html
-    // http://localhost:8080/proyecto/api-docs
+    // http://localhost:8080/apirestuser
+    // http://localhost:8080/apirestuser/swagger-ui.html
+    // http://localhost:8080/apirestuser/api-docs
     
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Productos")
+                        .title("API de Usuarios")
                         .version("1.0.0")
-                        .description("API REST para gestión de productos")
+                        .description("API REST para gestión de usuarios con sus roles")
                         .contact(new Contact()
                                 .name("Balmis")
                                 .email("admin@balmis.com")

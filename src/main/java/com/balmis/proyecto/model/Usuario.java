@@ -39,13 +39,13 @@ public class Usuario implements Serializable {
     @Schema(description = "Nombre del usuario", example = "Vadim")
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 1, max = 50, message = "El nombre no puede tener más de 50 caracteres")
-    @Column(name = "username", nullable = false, unique = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Schema(description = "Email del usuario", example = "vadim@balmis.com")
     @NotBlank(message = "El email es obligatorio")
     @Size(min = 1, max = 100, message = "El email no puede tener más de 100 caracteres")
-    @Column(name = "email", nullable = false, unique = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Schema(description = "Password del usuario encriptada", example = "$2a$10$fzcGgF.8xODz7ptkmZC")

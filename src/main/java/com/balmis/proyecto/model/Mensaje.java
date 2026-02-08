@@ -1,5 +1,8 @@
 package com.balmis.proyecto.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,10 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,8 +59,8 @@ public class Mensaje implements Serializable{
     private String email;
 
 
-    @Schema(description = "Fecha del mensaje", example = "01-11-2015")
-    @NotBlank(message = "La fecha es obligatorio")
+    @Schema(description = "Fecha del mensaje", example = "2015-11-01")
+    @NotNull(message = "La fecha es obligatorio")
     @Column(name = "post_date", nullable = false, unique = false)
-    private Date post_date;
+    private LocalDate post_date;
 }

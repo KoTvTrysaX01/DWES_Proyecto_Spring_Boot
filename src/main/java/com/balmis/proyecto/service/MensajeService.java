@@ -66,7 +66,7 @@ public class MensajeService {
         if (mensajeDetails.getEmail()  != null) {
             mensaje.setEmail(mensajeDetails.getEmail());
         }
-        if (mensajeDetails.getPost_date()  != null) {
+        if (mensajeDetails.getPost_date() != null) {
             mensaje.setPost_date(mensajeDetails.getPost_date());
         }
         
