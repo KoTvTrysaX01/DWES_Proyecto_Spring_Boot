@@ -39,19 +39,19 @@ public class Producto implements Serializable{
 
     private static final long serialVersionUID = 1L; 
 
-    @Schema(description = "ID único del producto", example = "1")
+    @Schema(description = "ID único del producto", example = "0")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true) 
     private int id;
 
-    @Schema(description = "Nombre del producto", example = "Ordenador portátil")
+    @Schema(description = "Nombre del producto", example = "1-cookies")
     @NotBlank(message = "El nombre es obligatoria")
     @Size(min=1, max=50, message = "El nombre no puede tener más de 50 caracteres")
     @Column(name = "nombre", nullable = false, unique = true) 
     private String nombre;
 
-    @Schema(description = "Descripcion del producto", example = "Ordenador portátil muy muy bueno")
+    @Schema(description = "Descripcion del producto", example = "Nuevo cookie")
     @NotBlank(message = "La descripcion es obligatoria")
     @Size(min=1, max=200, message = "La descripcion no puede tener más de 200 caracteres")
     @Column(name = "descripcion", nullable = false, unique = false) 

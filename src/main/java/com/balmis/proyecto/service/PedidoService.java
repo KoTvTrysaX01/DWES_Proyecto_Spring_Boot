@@ -30,6 +30,11 @@ public class PedidoService {
         return pedidoRepository.findSqlByIdPedido(id);
     }
 
+    @Transactional(readOnly = true)
+    public List<Pedido> findByUserId(int id){
+        return pedidoRepository.findSqlByIdUsuario(id);
+    }
+
     @Transactional(readOnly = true) 
     public Long count() {
         return pedidoRepository.count();

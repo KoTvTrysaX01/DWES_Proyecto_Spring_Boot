@@ -30,25 +30,25 @@ public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "ID único del usuario", example = "1")
+    @Schema(description = "ID único del usuario", example = "0")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private int id;
 
-    @Schema(description = "Nombre del usuario", example = "Vadim")
+    @Schema(description = "Nombre del usuario", example = "usuario")
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 1, max = 50, message = "El nombre no puede tener más de 50 caracteres")
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Schema(description = "Email del usuario", example = "vadim@balmis.com")
+    @Schema(description = "Email del usuario", example = "usuario@balmis.com")
     @NotBlank(message = "El email es obligatorio")
     @Size(min = 1, max = 100, message = "El email no puede tener más de 100 caracteres")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Schema(description = "Password del usuario encriptada", example = "$2a$10$fzcGgF.8xODz7ptkmZC")
+    @Schema(description = "Password del usuario encriptada", example = "$2a$10$ayw3FCBIkupFt5n9lrmJQe9XZMJhZiNCjaoOkXo/Ba0KZgymO01ce")
     @NotBlank(message = "El password es obligatorio")
     @Size(min = 1, max = 200, message = "El password no puede tener más de 200 caracteres")
     @Column(name = "password", nullable = false, unique = false)

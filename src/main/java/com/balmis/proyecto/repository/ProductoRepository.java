@@ -23,7 +23,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     Producto findSqlByIdProducto(@Param("id") int id);
 
     // Buscar - Por ID de Categoria
-    @Query(value = "SELECT * FROM productos WHERE id = :categoria_id", nativeQuery = true)
+    @Query(value = "SELECT * FROM productos WHERE categoria_id = :categoria_id", nativeQuery = true)
     List<Producto> findSqlByIdCategoria(@Param("categoria_id") int categoria_id);
 
     // Buscar - Contar todos

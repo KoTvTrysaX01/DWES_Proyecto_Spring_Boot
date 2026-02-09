@@ -18,6 +18,10 @@ public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
     @Query(value = "SELECT * FROM pedidos WHERE id = :id", nativeQuery = true)
     Pedido findSqlByIdPedido(@Param("id") int id);
 
+    // Buscar - Por ID de Usuario
+    @Query(value = "SELECT * FROM pedidos WHERE user_id = :user_id", nativeQuery = true)
+    List<Pedido> findSqlByIdUsuario(@Param("user_id") int user_id);
+
     // Buscar - Contar todos
     @Query(value = "SELECT COUNT(*) as cantidad FROM pedidos", nativeQuery = true)
     Long countSql();    

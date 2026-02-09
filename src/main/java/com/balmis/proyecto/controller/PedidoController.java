@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "pedidos", description = "API para gestión de pedidos")
+@Tag(name = "Pedidos", description = "API para gestión de pedidos")
 @RestController
 @RequestMapping("/pedidos")
 public class PedidoController {
@@ -89,14 +89,30 @@ public class PedidoController {
     })
     // ***************************************************************************    
     @GetMapping("/mayor/{id}")
-    public ResponseEntity<List<Pedido>> showpedidosMayores(@PathVariable int id) {
+    public ResponseEntity<List<Pedido>> showPedidosMayores(@PathVariable int id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(pedidoService.findByIdGrThan(id));
     }
 
+    // http://localhost:8080/proyecto/pedidos/user/7
+    // ***************************************************************************    
+    // SWAGGER
+    @Operation(summary = "Obtener pedidos de un usuario",
+            description = "Retorna una lista con todos los pedidos de un Usuario")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "pedidos obtenidos con éxito")
+    })
+    // ***************************************************************************    
+    @GetMapping("/user/{user_id}")
+    public ResponseEntity<List<Pedido>> showPedidos(@PathVariable int user_id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(pedidoService.findByUserId(user_id));
+    }
 
-        // http://localhost:8080/proyecto/pedidos/count
+
+    // http://localhost:8080/proyecto/pedidos/count
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener el número de pedidos existentes",

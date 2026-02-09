@@ -33,39 +33,39 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/").permitAll()                               // Acceso público a "/"
-                    .requestMatchers("/api/auth/**").permitAll()                    // Acceso público a Identificación
-                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()
-                    .requestMatchers("/categoria/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
-                    .requestMatchers("/productos/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/mensajes/**").permitAll()
-                    .requestMatchers("/mensajes/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/pedidos/**").hasRole("USER")
-                    .requestMatchers(HttpMethod.GET, "/pedidos/**").hasRole("USER")
-                    .requestMatchers("/pedidos/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
-                    .requestMatchers("/usuarios/**").hasRole("ADMIN")
-                    .requestMatchers("/lineaspedido/**").hasRole("ADMIN")              
-                    .requestMatchers("/h2-console/**").hasRole("ADMIN")             // Acceso identificado a consola H2           
-                    .anyRequest().denyAll()                                         // Acceso DENEGADO al resto
+                    .requestMatchers("/").permitAll()                                   // Acceso público a "/"
+                    // .requestMatchers("/**").permitAll()                              // Acceso a la documentacion de Swagger
+                    .requestMatchers("/api/auth/**").permitAll()                        // Acceso público a Identificación
+                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()      // Acceso público a GET de "/categorias"
+                    .requestMatchers("/categorias/**").hasRole("ADMIN")                 // Acceso privado (ADMIN) a GET POST PUT DELETE de "/categorias"
+                    .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()       // Acceso público a GET de "/productos"
+                    .requestMatchers("/productos/**").hasRole("ADMIN")                  // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
+                    .requestMatchers(HttpMethod.POST, "/mensajes/**").permitAll()       // Acceso público a POST de "/mensajes"
+                    .requestMatchers("/mensajes/**").hasRole("ADMIN")                   // Acceso privado a GET POST PUT DELETE de "/mensajes"
+                    .requestMatchers(HttpMethod.GET, "/pedidos/**").hasRole("USER")     // Acceso privado (USER) a GET de "/pedidos"
+                    .requestMatchers(HttpMethod.POST, "/pedidos/**").hasRole("USER")    // Acceso privado (USER) a POST de "/pedidos"
+                    .requestMatchers("/pedidos/**").hasRole("ADMIN")                    // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
+                    .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()       // Acceso publico a POST de "/usuarios"
+                    .requestMatchers("/usuarios/**").hasRole("ADMIN")                   // Acceso privado (ADMIN) a GET POST PUT DELETE de "/usuarios"
+                    .requestMatchers("/lineaspedido/**").hasRole("ADMIN")               // Acceso privado (ADMIN) a GET POST PUT DELETE de "/lineaspedido"
+                    .requestMatchers("/h2-console/**").hasRole("ADMIN")                 // Acceso identificado a consola H2           
+                    .anyRequest().denyAll()                                             // Acceso DENEGADO al resto & Comentar para acceder a la documentacion de swagger?
                 )
-                // Inicio de Configuraciones adicionales para H2
+
                 .csrf(csrf -> csrf
-                    .ignoringRequestMatchers("/h2-console/**") // Desactiva CSRF para H2
+                    .ignoringRequestMatchers("/h2-console/**") 
                     .disable()
                 )
                 .sessionManagement(session -> session
-                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // Crea sesión solo si es necesario (por defecto)
+                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
                 .headers(headers -> headers
                     .frameOptions(frame -> frame
-                        .sameOrigin() // Permite iframes del mismo origen (necesario para H2)
+                        .sameOrigin() 
                     )
-                )    
-                // Fin de Configuraciones adicionales para H2                
+                )                  
                 .formLogin(form -> 
-                        form.disable()  // desactivamos formulario login por defecto
+                        form.disable()
                 ) 
                 .httpBasic(httpBasic -> Customizer
                         .withDefaults()
@@ -76,7 +76,7 @@ public class SecurityConfig {
     @Bean
     public DaoAuthenticationProvider authProvider(
             UserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder) {          // ← muy recomendable añadirlo aquí
+            PasswordEncoder passwordEncoder) {
 
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
         provider.setPasswordEncoder(passwordEncoder);

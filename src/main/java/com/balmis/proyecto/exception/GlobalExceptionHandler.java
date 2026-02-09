@@ -30,9 +30,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<?> serializacionError(
             BadCredentialsException ex, HttpServletRequest request) { 
-        
-        // Solo para cuando hacemos login y falla
-        // Spring Security captura las excepciones para recurso inexistente o recurso prohibido
         Map<String, Object> response = new HashMap<>();
         response.put("timestamp", java.time.LocalDateTime.now());
         response.put("status", 401);

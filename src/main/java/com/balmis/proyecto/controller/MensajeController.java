@@ -96,7 +96,23 @@ public class MensajeController {
     }
 
 
-        // http://localhost:8080/proyecto/mensajes/count
+    // http://localhost:8080/proyecto/mensajes/titulo/miTitulo
+    // ***************************************************************************    
+    // SWAGGER
+    @Operation(summary = "Obtener mensajes mayores de un ID",
+            description = "Retorna una lista con todos los mensajes con ID mayor que un valor")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Mensajes obtenidos con éxito")
+    })
+    // ***************************************************************************    
+    @GetMapping("/titulo/{titulo}")
+    public ResponseEntity<Mensaje> showMensajesPorTitulo(@PathVariable String titulo) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(mensajeService.findByTitulo(titulo));
+    }
+
+    // http://localhost:8080/proyecto/mensajes/count
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener el número de mensajes existentes",

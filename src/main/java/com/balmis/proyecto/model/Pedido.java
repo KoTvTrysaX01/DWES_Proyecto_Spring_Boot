@@ -40,7 +40,7 @@ public class Pedido implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "ID único del pedido", example = "1")
+    @Schema(description = "ID único del pedido", example = "0")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true) 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.balmis.proyecto.model.Mensaje;
 import com.balmis.proyecto.model.Producto;
 import com.balmis.proyecto.service.ProductoService;
 
@@ -26,7 +27,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "productos", description = "API para gestión de productos")
+@Tag(name = "Productos", description = "API para gestión de productos")
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -89,14 +90,30 @@ public class ProductoController {
     })
     // ***************************************************************************    
     @GetMapping("/mayor/{id}")
-    public ResponseEntity<List<Producto>> showproductosMayores(@PathVariable int id) {
+    public ResponseEntity<List<Producto>> showProductosMayores(@PathVariable int id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(productoService.findByIdGrThan(id));
     }
 
+    // http://localhost:8080/proyecto/productos/categoria/categoria_id
+    // ***************************************************************************    
+    // SWAGGER
+    @Operation(summary = "Obtener productos por un id de categoria",
+            description = "Retorna una lista con los productos de una categoria")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Productos obtenidos con éxito")
+    })
+    // ***************************************************************************    
+    @GetMapping("/categoria/{categoria_id}")
+    public ResponseEntity<List<Producto>> showProductosPorCategoria(@PathVariable int categoria_id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(productoService.findByIdCategoria(categoria_id));
+    }
 
-        // http://localhost:8080/proyecto/productos/count
+
+    // http://localhost:8080/proyecto/productos/count
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener el número de productos existentes",
@@ -106,7 +123,7 @@ public class ProductoController {
     })
     // ***************************************************************************    
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countproductos() {
+    public ResponseEntity<Map<String, Object>> countProductos() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
