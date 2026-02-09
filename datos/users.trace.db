@@ -24358,3 +24358,213 @@ INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 
 2026-02-08 16:15:31.186233+01:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
 INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 08:45:11.520345+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 08:45:11.562356+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 08:45:11.562542+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 08:45:11.562634+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 08:45:11.562746+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 08:45:11.562838+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 08:45:11.562924+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 08:53:37.755950+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 08:53:37.760254+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 08:53:37.760492+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 08:53:37.760655+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 08:53:37.760755+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 08:53:37.760885+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 08:53:37.760980+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 08:56:43.677969+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 08:56:43.683182+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 08:56:43.683494+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 08:56:43.683631+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 08:56:43.683734+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 08:56:43.683831+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 08:56:43.683916+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 08:57:51.522510+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 08:57:51.527187+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 08:57:51.527447+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 08:57:51.527577+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 08:57:51.527677+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 08:57:51.527778+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 08:57:51.527868+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 08:59:55.333697+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 08:59:55.337267+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 08:59:55.337436+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 08:59:55.337514+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 08:59:55.337576+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 08:59:55.337636+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 08:59:55.337699+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 09:00:59.137626+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 09:00:59.140607+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 09:00:59.140826+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 09:00:59.140932+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 09:00:59.141015+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 09:00:59.141090+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 09:00:59.141157+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 09:04:07.046430+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 09:04:07.051192+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 09:04:07.051398+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 09:04:07.051480+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 09:04:07.051554+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 09:04:07.051626+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 09:04:07.051700+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 09:05:53.541891+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 09:05:53.549905+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 09:05:53.550102+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 09:05:53.550208+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 09:05:53.550324+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 09:05:53.550438+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 09:05:53.550568+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 09:13:16.501876+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 09:13:16.507157+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 09:13:16.507417+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 09:13:16.507531+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 09:13:16.507643+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 09:13:16.507751+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 09:13:16.507844+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]
+2026-02-09 09:16:45.375772+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) [*]FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL )"; expected "INDEX, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS lineas_pedido( id_pedido INT, id_producto INT, cantidad INT NOT NULL, precio DECIMAL(5,2) NOT NULL, PRIMARY KEY (id_pedido, id_producto) FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL, FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL ) [42001-240]
+2026-02-09 09:16:45.378930+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 1, 2, 4.99) [42102-240]
+2026-02-09 09:16:45.379129+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (1, 3, 1, 2.99) [42102-240]
+2026-02-09 09:16:45.379228+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 4, 3, 4.59) [42102-240]
+2026-02-09 09:16:45.379319+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 8, 10, 3.00) [42102-240]
+2026-02-09 09:16:45.379411+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00) [42102-240]
+2026-02-09 09:16:45.379486+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "LINEAS_PEDIDO" not found; SQL statement:
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99) [42102-240]

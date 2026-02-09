@@ -1,75 +1,76 @@
-// package com.balmis.proyecto.service;
-
-// import java.util.ArrayList;
-
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.security.core.userdetails.User;
-// import org.springframework.security.core.userdetails.UserDetails;
-// import org.springframework.security.core.userdetails.UserDetailsService;
-// import org.springframework.security.core.userdetails.UsernameNotFoundException;
-// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.stereotype.Service;
-// import org.springframework.transaction.annotation.Transactional;
-
-// import com.balmis.proyecto.model.Usuario;
-// import com.balmis.proyecto.repository.UsuarioRepository;
+package com.balmis.proyecto.service;
 
 
-// @Service
-// public class CustomUserDetailsService implements UserDetailsService {
+import java.util.ArrayList;
 
-//     @Autowired
-//     private final UsuarioRepository userRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-//     public CustomUserDetailsService(UsuarioRepository userRepository) {
-//         this.userRepository = userRepository;
-//     }
+import com.balmis.proyecto.model.Usuario;
+import com.balmis.proyecto.repository.UsuarioRepository;
 
-//     @Override
-//     @Transactional(readOnly = true)
-//     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//         Usuario usuario = userRepository.findByUsername(username)
-//                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con username: " + username));
 
-//         // ****************************
-//         // Crear el UserDetails
-//         // ****************************
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private final UsuarioRepository userRepository;
+
+    public CustomUserDetailsService(UsuarioRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con username: " + username));
+
+        // ****************************
+        // Crear el UserDetails
+        // ****************************
         
-//         if (!usuario.isActivado()) {
-//             throw new UsernameNotFoundException("Usuario no encontrado con username: " + username);   
-//         }
+        if (!usuario.isActivado()) {
+            throw new UsernameNotFoundException("Usuario no encontrado con username: " + username);   
+        }
         
-//         ArrayList<String> rolesArray = new ArrayList<>();
+        ArrayList<String> rolesArray = new ArrayList<>();
         
-//         if (usuario.isAdministrador()) {
-//             rolesArray.add("ADMIN");
-//         }
-//         if (usuario.isUsuario()) {
-//             rolesArray.add("USER");
-//         }
-//         if (usuario.isInvitado()) {
-//             rolesArray.add("GUEST");
-//         }
+        if (usuario.isAdministrador()) {
+            rolesArray.add("ADMIN");
+        }
+        if (usuario.isUsuario()) {
+            rolesArray.add("USER");
+        }
+        if (usuario.isInvitado()) {
+            rolesArray.add("GUEST");
+        }
 
-//         UserDetails userH2 = User
-//                 .withUsername(usuario.getUsername())
-//                 .password(usuario.getPassword())
-//                 .roles(rolesArray.toArray(new String[rolesArray.size()]))
-//                 .build();
+        UserDetails userH2 = User
+                .withUsername(usuario.getUsername())
+                .password(usuario.getPassword())
+                .roles(rolesArray.toArray(new String[rolesArray.size()]))
+                .build();
 
-//         if (userH2!=null) {
-//             System.out.println();
-//             System.out.println("Username:"+userH2.getUsername());
-//             System.out.println("Password:"+userH2.getPassword());
-//             System.out.println("Roles...:"+rolesArray.toArray().toString());
-//         } 
+        if (userH2!=null) {
+            System.out.println();
+            System.out.println("Username:"+userH2.getUsername());
+            System.out.println("Password:"+userH2.getPassword());
+            System.out.println("Roles...:"+rolesArray.toArray().toString());
+        } 
         
-//         return userH2;
+        return userH2;
 
-//     }
+    }
 
-//     public PasswordEncoder passwordEncoder() {
-//         return new BCryptPasswordEncoder();
-//     }
-// }
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}

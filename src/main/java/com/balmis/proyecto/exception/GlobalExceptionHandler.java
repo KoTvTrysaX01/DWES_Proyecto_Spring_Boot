@@ -11,6 +11,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,6 +25,22 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<?> serializacionError(
+            BadCredentialsException ex, HttpServletRequest request) { 
+        
+        // Solo para cuando hacemos login y falla
+        // Spring Security captura las excepciones para recurso inexistente o recurso prohibido
+        Map<String, Object> response = new HashMap<>();
+        response.put("timestamp", java.time.LocalDateTime.now());
+        response.put("status", 401);
+        response.put("error", "BadCredentialsException: Error en usuario o contraseña");
+        response.put("message", ex.getMessage());
+        response.put("path", request.getRequestURI());
+        return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
+    }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<?> serializacionError(
