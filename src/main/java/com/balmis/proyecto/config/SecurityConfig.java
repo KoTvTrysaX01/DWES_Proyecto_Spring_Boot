@@ -47,7 +47,7 @@ public class SecurityConfig {
                     .requestMatchers("/pedidos/**").hasRole("ADMIN")                    // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
                     .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()       // Acceso publico a POST de "/usuarios"
                     .requestMatchers("/usuarios/**").hasRole("ADMIN")                   // Acceso privado (ADMIN) a GET POST PUT DELETE de "/usuarios"
-                    .requestMatchers("/lineaspedido/**").hasRole("ADMIN")               // Acceso privado (ADMIN) a GET POST PUT DELETE de "/lineaspedido"
+                    .requestMatchers("/lineaspedido/**").permitAll()              // Acceso privado (ADMIN) a GET POST PUT DELETE de "/lineaspedido"
                     .requestMatchers("/h2-console/**").hasRole("ADMIN")                 // Acceso identificado a consola H2           
                     .anyRequest().denyAll()                                             // Acceso DENEGADO al resto & Comentar para acceder a la documentacion de swagger?
                 )

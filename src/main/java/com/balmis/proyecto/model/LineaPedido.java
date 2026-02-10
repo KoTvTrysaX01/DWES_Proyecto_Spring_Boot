@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -25,21 +27,25 @@ import lombok.NoArgsConstructor;
 
 // JPA
 // @Entity // Places @Embeddable instead of @Entity. Somehow works?
-@Embeddable
+// @Embeddable
+@Entity
 @Table(name = "lineas_pedido")
 public class LineaPedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "id_pedido", nullable = false)
-    private Pedido pedido;
+    // @EmbeddedId 
+    // @OneToOne(optional = false, orphanRemoval = true)
+    // @JoinColumn(name = "id_pedido", nullable = false)
+    // private Pedido pedido;
 
-    @Id
-    @OneToOne(optional = false, orphanRemoval = true)
-    @JoinColumn(name = "id_producto", nullable = false)
-    private Producto producto;
+    // @EmbeddedId 
+    // @OneToOne(optional = false, orphanRemoval = true)
+    // @JoinColumn(name = "id_producto", nullable = false)
+    // private Producto producto;
+
+    @EmbeddedId
+    private LineaPedidoId lineaPedidoId;
 
     @Schema(description = "Cantidad del producto del pedido", example = "0")
     @Min(value = 1, message = "La cantidad mínima es 1")

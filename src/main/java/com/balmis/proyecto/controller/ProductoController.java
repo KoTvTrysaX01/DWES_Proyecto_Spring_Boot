@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.balmis.proyecto.model.Mensaje;
 import com.balmis.proyecto.model.Producto;
 import com.balmis.proyecto.service.ProductoService;
 

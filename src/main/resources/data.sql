@@ -44,6 +44,16 @@ INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (2, 
 INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 8, 1, 3.00);
 INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (3, 3, 1, 2.99);
 
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (4, 1, 2, 4.99);
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (4, 3, 1, 2.99);
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (4, 2, 2, 4.99);
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (4, 4, 1, 2.99);
+
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (5, 4, 3, 4.59);
+
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (6, 1, 1, 3.00);
+INSERT INTO lineas_pedido (id_pedido, id_producto, cantidad, precio) VALUES (6, 3, 1, 2.99);
+
 ALTER TABLE lineas_pedido ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM lineas_pedido);
 
 
