@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS lineas_pedido(
     id_producto     INT,
     cantidad        INT NOT NULL,
     precio          DECIMAL(5,2) NOT NULL,
-    PRIMARY KEY (id_pedido, id_producto)
+    PRIMARY KEY (id_pedido, id_producto),
     FOREIGN KEY (id_pedido) REFERENCES pedidos(id) ON DELETE SET NULL,
     FOREIGN KEY (id_producto) REFERENCES productos(id) ON DELETE SET NULL
 );

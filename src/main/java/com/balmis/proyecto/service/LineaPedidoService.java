@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.balmis.proyecto.model.LineaPedido;
-import com.balmis.proyecto.model.LineaPedidoId;
+import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.repository.LineaPedidoRepository;
 
 @Service
@@ -37,6 +37,11 @@ public class LineaPedidoService {
     @Transactional(readOnly = true) 
     public Long count() {
         return lineaPedidoRepository.count();
+    }
+
+    @Transactional(readOnly = true) 
+    public Usuario findUserByIdPedido(int id_pedido) {
+        return lineaPedidoRepository.findSqlUserByIdPedido(id_pedido);
     }
 
         // ************************

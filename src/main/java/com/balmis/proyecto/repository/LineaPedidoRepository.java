@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.balmis.proyecto.model.LineaPedido;
 import com.balmis.proyecto.model.LineaPedidoId;
+import com.balmis.proyecto.model.Usuario;
 
 public interface LineaPedidoRepository extends JpaRepository<LineaPedido, LineaPedidoId> {
 
@@ -27,6 +28,10 @@ public interface LineaPedidoRepository extends JpaRepository<LineaPedido, LineaP
     @Query(value = "SELECT COUNT(*) as lineas_pedido FROM lineas_pedido", nativeQuery = true)
     Long countSql();
     
+
+    @Query(value = "SELECT users_security.* FROM ((lineas_pedido INNER JOIN pedidos ON :id_pedido = pedidos.id) INNER JOIN users_security ON pedidos.user_id = users_security.id)", nativeQuery = true)
+    Usuario findSqlUserByIdPedido(@Param("id_pedido") int id_pedido);
+
     // @Query(value = "SELECT * FROM lineas_pedido WHERE lineaPedidoId.id = :id_pedido AND id_producto = :id_producto", nativeQuery = true)
     // LineaPedido findSqlByIds(@Param("lineaPedidoId") LineaPedidoId lineaPedidoId.);
     
