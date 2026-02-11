@@ -1,7 +1,6 @@
 package com.balmis.proyecto.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -40,7 +38,7 @@ public class Review implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    @Schema(description = "ID único del pedido", example = "0")
+    @Schema(description = "ID único del review", example = "0")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true) 
@@ -52,7 +50,8 @@ public class Review implements Serializable{
     @Column(name = "review", nullable = false, unique = false)
     private String review;
 
-    @Schema(description = "Fecha del review", example = "2015-01-11")
+    @Schema(description = "La fecha del review", example = "2015-01-11")
+    @NotBlank(message = "La fecha es obligatoria")
     @Column(name = "review_date", nullable = false, unique = false)
     private Date review_date;
 

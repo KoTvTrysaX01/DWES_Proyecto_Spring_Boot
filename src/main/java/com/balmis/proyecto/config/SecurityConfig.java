@@ -33,26 +33,26 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/").permitAll()                                   // Acceso público a "/"
-                    // .requestMatchers("/**").permitAll()                              // Acceso a la documentacion de Swagger
-                    .requestMatchers("/api/auth/**").permitAll()                        // Acceso público a Identificación
-                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()      // Acceso público a GET de "/categorias"
-                    .requestMatchers("/categorias/**").hasRole("ADMIN")                 // Acceso privado (ADMIN) a GET POST PUT DELETE de "/categorias"
-                    .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()       // Acceso público a GET de "/productos"
-                    .requestMatchers("/productos/**").hasRole("ADMIN")                  // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
-                    .requestMatchers(HttpMethod.POST, "/mensajes/**").permitAll()       // Acceso público a POST de "/mensajes"
-                    .requestMatchers("/mensajes/**").hasRole("ADMIN")                   // Acceso privado a GET POST PUT DELETE de "/mensajes"
+                    .requestMatchers("/").permitAll()                                       // Acceso público a "/"
+                    .requestMatchers("/swagger-ui.html**").permitAll()                      // Acceso a la documentacion de Swagger
+                    .requestMatchers("/api/auth/**").permitAll()                            // Acceso público a Identificación
+                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()          // Acceso público a GET de "/categorias"
+                    .requestMatchers("/categorias/**").hasRole("ADMIN")               // Acceso privado (ADMIN) a GET POST PUT DELETE de "/categorias"
+                    .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()           // Acceso público a GET de "/productos"
+                    .requestMatchers("/productos/**").hasRole("ADMIN")                 // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
+                    .requestMatchers(HttpMethod.POST, "/mensajes/**").permitAll()            // Acceso público a POST de "/mensajes"
+                    .requestMatchers("/mensajes/**").hasRole("ADMIN")                  // Acceso privado a GET POST PUT DELETE de "/mensajes"
                     .requestMatchers(HttpMethod.GET, "/pedidos/**").hasRole("USER")     // Acceso privado (USER) a GET de "/pedidos"
                     .requestMatchers(HttpMethod.POST, "/pedidos/**").hasRole("USER")    // Acceso privado (USER) a POST de "/pedidos"
                     .requestMatchers("/pedidos/**").hasRole("ADMIN")                    // Acceso privado (ADMIN) a GET POST PUT DELETE de "/productos"
-                    .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()       // Acceso publico a POST de "/usuarios"
+                    .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()            // Acceso publico a POST de "/usuarios"
                     .requestMatchers("/usuarios/**").hasRole("ADMIN")                   // Acceso privado (ADMIN) a GET POST PUT DELETE de "/usuarios"
-                    .requestMatchers(HttpMethod.GET, "/reviews").permitAll()            // Acceso público a GET de "/reviews"
+                    .requestMatchers(HttpMethod.GET, "/reviews").permitAll()                 // Acceso público a GET de "/reviews"
                     .requestMatchers(HttpMethod.POST, "/reviews").hasRole("USER")       // Acceso privado (USER) a POST de "/reviews"
                     .requestMatchers("/reviews/**").hasRole("ADMIN")                    // Acceso privado (ADMIN) a GET POST PUT DELETE de "/reviews"
-                    .requestMatchers("/lineaspedido/**").permitAll()              // Acceso privado (ADMIN) a GET POST PUT DELETE de "/lineaspedido"
+                    .requestMatchers("/lineaspedido/**").hasRole("ADMIN")               // Acceso privado (ADMIN) a GET POST PUT DELETE de "/lineaspedido"
                     .requestMatchers("/h2-console/**").hasRole("ADMIN")                 // Acceso identificado a consola H2           
-                    .anyRequest().denyAll()                                             // Acceso DENEGADO al resto & Comentar para acceder a la documentacion de swagger?
+                    .anyRequest().denyAll()                                                               // Acceso DENEGADO al resto & Comentar para acceder a la documentacion de swagger?
                 )
 
                 .csrf(csrf -> csrf

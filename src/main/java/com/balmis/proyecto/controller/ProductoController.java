@@ -48,7 +48,7 @@ public class ProductoController {
     })
     // ***************************************************************************    
     @GetMapping("")
-    public ResponseEntity<List<Producto>> showproductos() {
+    public ResponseEntity<List<Producto>> showProductos() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(productoService.findAll());
@@ -98,7 +98,7 @@ public class ProductoController {
     // http://localhost:8080/proyecto/productos/categoria/categoria_id
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener productos por un id de categoria",
+    @Operation(summary = "Obtener productos por un id_categoria",
             description = "Retorna una lista con los productos de una categoria")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Productos obtenidos con éxito")
@@ -145,8 +145,8 @@ public class ProductoController {
     // http://localhost:8080/proyecto/productos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Crear una nueva producto",
-            description = "Registra una nueva producto en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear un nuevo producto",
+            description = "Registra un nuev producto en el sistema con los datos proporcionados")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Producto creada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
@@ -168,13 +168,12 @@ public class ProductoController {
         } else {
 
             if (producto.getNombre() == null || producto.getNombre().trim().isEmpty()
-                    || producto.getDescripcion() == null || producto.getDescripcion().trim().isEmpty()
                     || producto.getPrecio() == null
                     || producto.getCategoria() == null
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'Producto' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'nombre', 'descripcion', 'precio' y 'categoria' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
@@ -184,7 +183,7 @@ public class ProductoController {
                 Producto productoPost = productoService.save(producto);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Producto creada con éxito");
+                map.put("mensaje", "Producto creado con éxito");
                 map.put("insertProducto", productoPost);
 
                 response = ResponseEntity
@@ -196,13 +195,13 @@ public class ProductoController {
         return response;
     }
 
-        // ****************************************************************************
+    // ****************************************************************************
     // UPDATE (PUT)
     // http://localhost:8080/proyecto/productos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Actualizar un Producto existente",
-            description = "Reemplaza completamente los datos de unu Producto identificado por su ID")
+    @Operation(summary = "Actualizar un producto existente",
+            description = "Reemplaza completamente los datos de unu producto identificado por su ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Producto actualizado con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
@@ -253,7 +252,7 @@ public class ProductoController {
                 Producto productoPut = productoService.save(existingProducto);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Producto actualizada con éxito");
+                map.put("mensaje", "Producto actualizado con éxito");
                 map.put("updatedProducto", productoPut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);

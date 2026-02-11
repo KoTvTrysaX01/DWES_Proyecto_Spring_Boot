@@ -21,7 +21,7 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("API de Heladeria")
                         .version("1.0.0")
-                        .description("API REST para gestión de base de datos de una heladeria")
+                        .description("API REST para gestión de base de datos de una heladeria. Proyecto DWES UD5 de Vadim Elshin")
                         .contact(new Contact()
                                 .name("Balmis")
                                 .email("admin@balmis.com")

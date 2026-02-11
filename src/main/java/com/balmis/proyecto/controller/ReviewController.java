@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "Reviews", description = "API para gestión de pedidos")
+@Tag(name = "Reviews", description = "API para gestión de reviews")
 @RestController
 @RequestMapping("/reviews")
 public class ReviewController {
@@ -38,13 +38,13 @@ public class ReviewController {
     // ***************************************************************************
     // CONSULTAS
     // ***************************************************************************
-    // http://localhost:8080/proyecto/pedidos
+    // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener todos los pedidos",
-            description = "Retorna una lista con todos los pedidos disponibles")
+    @Operation(summary = "Obtener todos los reviews",
+            description = "Retorna una lista con todos los reviews disponibles")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "pedidos obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "reviews obtenidos con éxito")
     })
     // ***************************************************************************    
     @GetMapping("")
@@ -54,14 +54,14 @@ public class ReviewController {
                 .body(reviewService.findAll());
     }
 
-    // http://localhost:8080/proyecto/pedidos/2
+    // http://localhost:8080/proyecto/reviews/2
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener Pedido por ID",
-            description = "Retorna un Pedido especifico basado en su ID")
+    @Operation(summary = "Obtener review por ID",
+            description = "Retorna un review especifico basado en su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Pedido encontrado"),
-        @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())
+        @ApiResponse(responseCode = "200", description = "Review encontrado"),
+        @ApiResponse(responseCode = "404", description = "Review no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @GetMapping("/{id}")
@@ -122,12 +122,12 @@ public class ReviewController {
     })
     // ***************************************************************************    
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countpedidos() {
+    public ResponseEntity<Map<String, Object>> countReviews() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
         Map<String, Object> map = new HashMap<>();
-        map.put("pedidos", reviewService.count());
+        map.put("reviews", reviewService.count());
 
         response = ResponseEntity
                 .status(HttpStatus.OK)
@@ -145,10 +145,10 @@ public class ReviewController {
     // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Crear una nueva Pedido",
-            description = "Registra una nueva Pedido en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear un nuev review",
+            description = "Registra un nuev review en el sistema con los datos proporcionados")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Pedido creada con éxito", content = @Content()),
+        @ApiResponse(responseCode = "201", description = "Review creado con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
     })
     // ***************************************************************************
@@ -173,7 +173,7 @@ public class ReviewController {
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'Pedido' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'review', 'review_date' y 'usuario' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
@@ -183,7 +183,7 @@ public class ReviewController {
                 Review reviewPost = reviewService.save(review);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Review creada con éxito");
+                map.put("mensaje", "Review creado con éxito");
                 map.put("insertReview", reviewPost);
 
                 response = ResponseEntity
@@ -200,7 +200,7 @@ public class ReviewController {
     // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Actualizar un Review existente",
+    @Operation(summary = "Actualizar un review existente",
             description = "Reemplaza completamente los datos de unu Review identificado por su ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Review actualizado con éxito", content = @Content()),
@@ -209,7 +209,7 @@ public class ReviewController {
     })
     // ***************************************************************************    
     @PutMapping("")
-    public ResponseEntity<Map<String, Object>> updatePedido(
+    public ResponseEntity<Map<String, Object>> updateReview(
             @Valid @RequestBody Review reviewUpdate) {
 
         ResponseEntity<Map<String, Object>> response;
@@ -225,7 +225,7 @@ public class ReviewController {
 
             if (existingReview == null) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Pedido no encontrado");
+                map.put("error", "Review no encontrado");
                 map.put("id", id);
 
                 response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
@@ -245,7 +245,7 @@ public class ReviewController {
                 Review reviewPut = reviewService.save(existingReview);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Review actualizada con éxito");
+                map.put("mensaje", "Review actualizado con éxito");
                 map.put("updatedReview", reviewPut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);
@@ -269,14 +269,14 @@ public class ReviewController {
     })
     // ***************************************************************************    
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deletePedido(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> deleteReview(@PathVariable int id) {
 
         ResponseEntity<Map<String, Object>> response;
 
         Review existingReview = reviewService.findById(id);
         if (existingReview == null) {
             Map<String, Object> map = new HashMap<>();
-            map.put("error", "Pedido no encontrado");
+            map.put("error", "Review no encontrado");
             map.put("id", id);
 
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
@@ -286,7 +286,7 @@ public class ReviewController {
 
             Map<String, Object> map = new HashMap<>();
             map.put("mensaje", "Review eliminado con éxito");
-            map.put("deletedPedido", existingReview);
+            map.put("deletedReview", existingReview);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }

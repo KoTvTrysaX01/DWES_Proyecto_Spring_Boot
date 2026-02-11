@@ -40,26 +40,26 @@ public class Mensaje implements Serializable{
     @Column(name = "id", nullable = false, unique = true) 
     private int id;
 
-    @Schema(description = "Titulo del mensaje", example = "Mi Titulo")
+    @Schema(description = "El titulo del mensaje", example = "Mi Titulo")
     @NotBlank(message = "El titulo del mensaje es obligatorio")
     @Size(min=1, max=30, message = "El titulo del mensaje no puede tener más de 30 caracteres")
     @Column(name = "titulo", nullable = false, unique = false) 
     private String titulo;
     
-    @Schema(description = "Mensaje del usuario", example = "Mi Mensaje")
+    @Schema(description = "El mensaje del usuario", example = "Mi Mensaje")
     @NotBlank(message = "El mensaje es obligatorio")
     @Size(min=1, max=300, message = "El mensaje no puede tener más de 300 caracteres")
     @Column(name = "mensaje", nullable = false, unique = false) 
     private String mensaje;
     
-    @Schema(description = "Email del usuario", example = "user@balmis.com")
+    @Schema(description = "El Email del usuario", example = "user@balmis.com")
     @NotBlank(message = "El email es obligatorio")
     @Size(min = 1, max = 100, message = "El email no puede tener más de 100 caracteres")
     @Column(name = "email", nullable = false, unique = false)
     private String email;
 
-    @Schema(description = "Fecha del mensaje", example = "2015-11-01")
-    @NotNull(message = "La fecha es obligatorio")
+    @Schema(description = "La fecha del mensaje", example = "2015-11-01")
+    @NotNull(message = "La fecha es obligatoria")
     @Column(name = "post_date", nullable = false, unique = false)
     private LocalDate post_date;
 }

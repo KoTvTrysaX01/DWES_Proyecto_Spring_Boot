@@ -174,7 +174,7 @@ public class MensajeController {
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'mensaje' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'titulo, 'mensaje', 'email' y 'post_date' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)

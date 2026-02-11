@@ -22,8 +22,6 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Modelo de LineaPedido", name = "LineaPedido")
 
 // JPA
-// @Entity // Places @Embeddable instead of @Entity. Somehow works?
-// @Embeddable
 @Entity
 @Table(name = "lineas_pedido")
 public class LineaPedido implements Serializable {
@@ -40,15 +38,16 @@ public class LineaPedido implements Serializable {
     // @JoinColumn(name = "id_producto", nullable = false)
     // private Producto producto;
 
+    @Schema(description = "EmbeddedId de la categoria. Se compone de Pedido y Producto")
     @EmbeddedId
     private LineaPedidoId lineaPedidoId;
 
-    @Schema(description = "Cantidad del producto del pedido", example = "0")
+    @Schema(description = "La cantidad del producto del pedido", example = "0")
     @Min(value = 0, message = "La cantidad mínima es 0")
     @Column(name = "cantidad", nullable = false, unique = false)
     private int cantidad;
 
-    @Schema(description = "Precio del producto del pedido", example = "151.99")
+    @Schema(description = "El precio del producto del pedido", example = "151.99")
     @Min(value = 0, message = "El precio mínimo es 0.00")
     @Column(name = "precio", nullable = false, unique = false)
     private BigDecimal precio;

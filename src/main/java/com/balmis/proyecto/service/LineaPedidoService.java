@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.balmis.proyecto.model.Categoria;
 import com.balmis.proyecto.model.LineaPedido;
 import com.balmis.proyecto.model.LineaPedidoId;
-import com.balmis.proyecto.model.Pedido;
 import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.repository.LineaPedidoRepository;
 
@@ -68,10 +66,10 @@ public class LineaPedidoService {
             .orElseThrow(() -> new RuntimeException("LineaPedido no encontrado"));
         
         if (lineaPedidoDetails.getLineaPedidoId().getPedido() != null) {
-            lineaPedido.getLineaPedidoId().setPedido(lineaPedidoDetails.getLineaPedidoId().getPedido());
+            lineaPedido.getLineaPedidoId().setPedido(lineaPedidoDetails.getLineaPedidoId().getPedido());        // lineaPedidoId == null?
         }
         if (lineaPedido.getLineaPedidoId().getProducto() != null) {
-            lineaPedido.getLineaPedidoId().setProducto(lineaPedidoDetails.getLineaPedidoId().getProducto());
+            lineaPedido.getLineaPedidoId().setProducto(lineaPedidoDetails.getLineaPedidoId().getProducto());    // lineaPedidoId == null?
         }
         if (lineaPedidoDetails.getCantidad() != 0) {
             lineaPedido.setCantidad(lineaPedidoDetails.getCantidad());

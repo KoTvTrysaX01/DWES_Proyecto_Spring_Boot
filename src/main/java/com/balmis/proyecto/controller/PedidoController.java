@@ -48,7 +48,7 @@ public class PedidoController {
     })
     // ***************************************************************************    
     @GetMapping("")
-    public ResponseEntity<List<Pedido>> showpedidos() {
+    public ResponseEntity<List<Pedido>> showPedidos() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(pedidoService.findAll());
@@ -122,7 +122,7 @@ public class PedidoController {
     })
     // ***************************************************************************    
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countpedidos() {
+    public ResponseEntity<Map<String, Object>> countPedidos() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
@@ -145,8 +145,8 @@ public class PedidoController {
     // http://localhost:8080/proyecto/pedidos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Crear una nueva Pedido",
-            description = "Registra una nueva Pedido en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear una nueva pedido",
+            description = "Registra una nueva pedido en el sistema con los datos proporcionados")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Pedido creada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
@@ -176,7 +176,7 @@ public class PedidoController {
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'Pedido' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'pedido', 'precio', 'tel', 'direccion', 'pedido_date' y 'usuario' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
@@ -273,8 +273,8 @@ public class PedidoController {
     // http://localhost:8080/proyecto/pedidos/16
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Eliminar Pedido por ID",
-            description = "Elimina un Pedido especifico del sistema")
+    @Operation(summary = "Eliminar pedido por ID",
+            description = "Elimina un pedido especifico del sistema")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Pedido eliminado con éxito", content = @Content()),
         @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())

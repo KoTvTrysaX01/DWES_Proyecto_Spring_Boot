@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.balmis.proyecto.model.LineaPedido;
 import com.balmis.proyecto.model.LineaPedidoId;
-import com.balmis.proyecto.model.Mensaje;
 import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.service.LineaPedidoService;
 
@@ -43,25 +42,25 @@ public class LineaPedidoController {
     // http://localhost:8080/proyecto/lineaspedido
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener todas las categorias", description = "Retorna una lista con todas las categorias disponibles")
+    @Operation(summary = "Obtener todas las lineas de pedido", description = "Retorna una lista con todas las lineas de pedido disponibles")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Categorias obtenidas con éxito")
+            @ApiResponse(responseCode = "200", description = "Lineas de pedido obtenidas con éxito")
     })
     // ***************************************************************************
     @GetMapping("")
-    public ResponseEntity<List<LineaPedido>> showCategorias() {
+    public ResponseEntity<List<LineaPedido>> showLineasPedido() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(lineaPedidoService.findAll());
     }
 
-    // http://localhost:8080/proyecto/lineaspedido/pedido/2/2
+    // http://localhost:8080/proyecto/lineaspedido/2/2
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener categoria por ID", description = "Retorna una categoria específica basado en su ID")
+    @Operation(summary = "Obtener linea de pedido por id_pedido y id_producto", description = "Retorna una linea de pedido específica basado en su id_pedido y id_producto")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Categoria encontrada"),
-            @ApiResponse(responseCode = "404", description = "Categoria no encontrada", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Linea de pedido encontrada"),
+            @ApiResponse(responseCode = "404", description = "Linea de pedido no encontrada", content = @Content())
     })
     // ***************************************************************************
     @GetMapping("/{id_pedido}/{id_producto}")
@@ -82,10 +81,10 @@ public class LineaPedidoController {
     // http://localhost:8080/proyecto/lineaspedido/pedido/2
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener categoria por ID", description = "Retorna una categoria específica basado en su ID")
+    @Operation(summary = "Obtener lineas de pedido de un pedido", description = "Retorna lineas de pedido con un id_pedido especifica")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Categoria encontrada"),
-            @ApiResponse(responseCode = "404", description = "Categoria no encontrada", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Linea de pedido encontrada"),
+            @ApiResponse(responseCode = "404", description = "Linea de pedido no encontrada", content = @Content())
     })
     // ***************************************************************************
     @GetMapping("/pedido/{id}")
@@ -103,36 +102,14 @@ public class LineaPedidoController {
         }
     }
 
-    // http://localhost:8080/proyecto/lineaspedido/pedido/2
-    // ***************************************************************************
-    // SWAGGER
-    @Operation(summary = "Obtener categoria por ID", description = "Retorna una categoria específica basado en su ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Categoria encontrada"),
-            @ApiResponse(responseCode = "404", description = "Categoria no encontrada", content = @Content())
-    })
-    // ***************************************************************************
-    @GetMapping("/pedido/usuario/{id_pedido}")
-    public ResponseEntity<Usuario> detailsUser(@PathVariable int id_pedido) {
-        Usuario usuario = lineaPedidoService.findUserByIdPedido(id_pedido);
-        if (usuario == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(null); // 404 Not Found
-        } else {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(usuario);
-        }
-    }
 
     // http://localhost:8080/proyecto/lineaspedido/producto/2
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener categoria por ID", description = "Retorna una categoria específica basado en su ID")
+    @Operation(summary = "Obtener lineas de pedido de un producto", description = "Retorna lineas de pedido con un id_producto especifica")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Categoria encontrada"),
-            @ApiResponse(responseCode = "404", description = "Categoria no encontrada", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Linea de pedido encontrada"),
+            @ApiResponse(responseCode = "404", description = "Linea de pedido no encontrada", content = @Content())
     })
     // ***************************************************************************
     @GetMapping("/producto/{id}")
@@ -150,16 +127,39 @@ public class LineaPedidoController {
         }
     }
 
+    // http://localhost:8080/proyecto/lineaspedido/pedido/user/1
+    // ***************************************************************************
+    // SWAGGER
+    @Operation(summary = "Obtener usuario por id_pedido", description = "Retorna un usuario específica basado en id_pedido")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
+    })
+    // ***************************************************************************
+    @GetMapping("/pedido/user/{id_pedido}")
+    public ResponseEntity<Usuario> detailsUser(@PathVariable int id_pedido) {
+        Usuario usuario = lineaPedidoService.findUserByIdPedido(id_pedido);
+        if (usuario == null) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body(null); // 404 Not Found
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(usuario);
+        }
+    }
+
     // http://localhost:8080/proyecto/lineaspedido/count
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener el número de categorias existentes", description = "Retorna la cantidad de categorias")
+    @Operation(summary = "Obtener el número de lineas de pedido existentes", description = "Retorna la cantidad de lineas de pedido")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Número de categorias obtenidas con éxito", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Número de lineas de pedido obtenidas con éxito", content = @Content())
     })
     // ***************************************************************************
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countCategorias() {
+    public ResponseEntity<Map<String, Object>> countLineasPedido() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
@@ -181,9 +181,9 @@ public class LineaPedidoController {
     // http://localhost:8080/proyecto/lineaspedido
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Crear una nueva categoria", description = "Registra una nueva categoria en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear una nueva linea de pedido", description = "Registra una nueva linea de pedido en el sistema con los datos proporcionados") // Doesn't work
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Categoria creada con éxito", content = @Content()),
+            @ApiResponse(responseCode = "201", description = "Linea de pedido creada con éxito", content = @Content()),
             @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
     })
     // ***************************************************************************
@@ -202,7 +202,7 @@ public class LineaPedidoController {
         } else {
 
             if (lineaPedido.getLineaPedidoId() == null
-                    || lineaPedido.getCantidad() != 0
+                    || lineaPedido.getCantidad() <= 0
                     || lineaPedido.getPrecio() == null) {
 
                 Map<String, Object> map = new HashMap<>();
@@ -216,8 +216,8 @@ public class LineaPedidoController {
                 LineaPedido lineaPedidoPost = lineaPedidoService.save(lineaPedido);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Categoria creada con éxito");
-                map.put("insertCategoria", lineaPedidoPost);
+                map.put("mensaje", "Linea de pedido creada con éxito");
+                map.put("insertLineaPedido", lineaPedidoPost);
 
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
@@ -232,11 +232,11 @@ public class LineaPedidoController {
     // http://localhost:8080/proyecto/lineaspedido
     // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Actualizar un mensaje existente", description = "Reemplaza completamente los datos de un mensaje identificado por su ID")
+    @Operation(summary = "Actualizar una linea de pedido existente", description = "Reemplaza completamente los datos de una linea de pedido identificada por su LineaPedidoId")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Mensaje actualizado con éxito", content = @Content()),
+            @ApiResponse(responseCode = "201", description = "Linea de pedido actualizada con éxito", content = @Content()),
             @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
-            @ApiResponse(responseCode = "404", description = "Mensaje no encontrada", content = @Content())
+            @ApiResponse(responseCode = "404", description = "Linea de pedido no encontrada", content = @Content())
     })
     // ***************************************************************************
     @PutMapping("")
@@ -257,7 +257,7 @@ public class LineaPedidoController {
 
             if (existingLineaPedido == null) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "LineaPedido no encontrado");
+                map.put("error", "LineaPedido no encontrada");
                 map.put("id", lineaPedidoId);
 
                 response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
@@ -274,7 +274,7 @@ public class LineaPedidoController {
                 LineaPedido lineaPedidoPut = lineaPedidoService.save(existingLineaPedido);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("lineapedido", "LineaPedido actualizado con éxito");
+                map.put("lineapedido", "LineaPedido actualizada con éxito");
                 map.put("updatedLineaPedido", lineaPedidoPut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);
@@ -287,18 +287,18 @@ public class LineaPedidoController {
 
     // ****************************************************************************
     // DELETE
-    // http://localhost:8080/proyecto/lineaspedido/16
+    // http://localhost:8080/proyecto/lineaspedido/1/3
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Eliminar mensaje por ID",
-            description = "Elimina un mensaje específico del sistema")
+    @Operation(summary = "Eliminar linea de pedido por id_pedido y id_producto",
+            description = "Elimina una linea de pedido específica del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Mensaje eliminado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Mensaje no encontrado", content = @Content())
+        @ApiResponse(responseCode = "201", description = "Linea de pedido eliminada con éxito", content = @Content()),
+        @ApiResponse(responseCode = "404", description = "Linea de pedido no encontrada", content = @Content())
     })
     // ***************************************************************************    
     @DeleteMapping("/{id_pedido}/{id_producto}")
-    public ResponseEntity<Map<String, Object>> deleteMensaje(@PathVariable int id_pedido, @PathVariable int id_producto) {
+    public ResponseEntity<Map<String, Object>> deleteLineaPedido(@PathVariable int id_pedido, @PathVariable int id_producto) {
 
         ResponseEntity<Map<String, Object>> response;
 
@@ -306,7 +306,8 @@ public class LineaPedidoController {
         if (existingLineaPedido == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "LineaPedido no encontrado");
-            map.put("id", existingLineaPedido.getLineaPedidoId());
+            map.put("id_pedido", id_pedido);
+            map.put("id_producto", id_producto);
 
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
         } else {
@@ -314,8 +315,8 @@ public class LineaPedidoController {
             lineaPedidoService.deleteById(existingLineaPedido.getLineaPedidoId());
 
             Map<String, Object> map = new HashMap<>();
-            map.put("mensaje", "Mensaje eliminado con éxito");
-            map.put("deletedMensaje", existingLineaPedido);
+            map.put("mensaje", "Linea de pedido eliminada con éxito");
+            map.put("deletedLineaPedido", existingLineaPedido);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }

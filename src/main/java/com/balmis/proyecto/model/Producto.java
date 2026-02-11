@@ -45,19 +45,19 @@ public class Producto implements Serializable{
     @Column(name = "id", nullable = false, unique = true) 
     private int id;
 
-    @Schema(description = "Nombre del producto", example = "1-cookies")
-    @NotBlank(message = "El nombre es obligatoria")
+    @Schema(description = "El nombre del producto", example = "1-cookies")
+    @NotBlank(message = "El nombre es obligatorio")
     @Size(min=1, max=50, message = "El nombre no puede tener más de 50 caracteres")
     @Column(name = "nombre", nullable = false, unique = true) 
     private String nombre;
 
-    @Schema(description = "Descripcion del producto", example = "Nuevo cookie")
+    @Schema(description = "La descripcion del producto", example = "Nuevo cookie")
     @NotBlank(message = "La descripcion es obligatoria")
     @Size(min=1, max=200, message = "La descripcion no puede tener más de 200 caracteres")
     @Column(name = "descripcion", nullable = false, unique = false) 
     private String descripcion;
 
-    @Schema(description = "Precio del producto", example = "151.99")
+    @Schema(description = "El precio del producto", example = "151.99")
     @Min(value = 0, message = "El precio mínimo es 0.00")
     @Column(name = "precio", nullable = false, unique = false) 
     private BigDecimal precio;
@@ -66,8 +66,8 @@ public class Producto implements Serializable{
     @Column(name = "stock", nullable = false, unique = false)
     private boolean stock;
 
-    @Schema(description = "Directorio de la imagen del producto", example = "./directorio/imagen.png")
-    @Size(min=1, max=100, message = "El Directorio de la imagen no puede tener más de 100 caracteres")
+    @Schema(description = "El directorio de la imagen del producto", example = "./directorio/imagen.png")
+    @Size(min=1, max=100, message = "El directorio de la imagen no puede tener más de 100 caracteres")
     @Column(name = "imagen", nullable = true, unique = false) 
     private String imagen;
 

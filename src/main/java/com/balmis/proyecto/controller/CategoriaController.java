@@ -153,7 +153,6 @@ public class CategoriaController {
 
             if (categoria.getCategoria() == null || categoria.getCategoria().trim().isEmpty()
                     || categoria.getDescripcion() == null || categoria.getDescripcion().trim().isEmpty()
-                    || categoria.getImagen() == null || categoria.getImagen().trim().isEmpty()
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
@@ -185,7 +184,7 @@ public class CategoriaController {
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Actualizar una categoria existente",
-            description = "Reemplaza completamente los datos de unu categoria identificada por su ID")
+            description = "Reemplaza completamente los datos de una categoria identificada por su ID")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Categoria actualizada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),

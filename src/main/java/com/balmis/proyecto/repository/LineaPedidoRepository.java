@@ -15,6 +15,10 @@ public interface LineaPedidoRepository extends JpaRepository<LineaPedido, LineaP
     // Buscar - Todos
     @Query(value = "SELECT * FROM lineas_pedido", nativeQuery = true)
     List<LineaPedido> findSqlAll();
+
+    // Buscar LineaPedido por ID de Pedido y ID de Producto
+    @Query(value = "SELECT * FROM lineas_pedido WHERE id_pedido = :id_pedido AND id_producto = :id_producto", nativeQuery = true)
+    LineaPedido findSqlByIds(@Param("id_pedido") int id_pedido, @Param("id_producto") int id_producto);
     
     // Buscar - Por ID de Pedido
     @Query(value = "SELECT * FROM lineas_pedido WHERE id_pedido = :id_pedido", nativeQuery = true)
@@ -28,11 +32,7 @@ public interface LineaPedidoRepository extends JpaRepository<LineaPedido, LineaP
     @Query(value = "SELECT COUNT(*) as lineas_pedido FROM lineas_pedido", nativeQuery = true)
     Long countSql();
     
-
+    // Buscar Usuario de un pedidio
     @Query(value = "SELECT users_security.* FROM ((lineas_pedido INNER JOIN pedidos ON :id_pedido = pedidos.id) INNER JOIN users_security ON pedidos.user_id = users_security.id)", nativeQuery = true)
     Usuario findSqlUserByIdPedido(@Param("id_pedido") int id_pedido);
-
-    @Query(value = "SELECT * FROM lineas_pedido WHERE id_pedido = :id_pedido AND id_producto = :id_producto", nativeQuery = true)
-    LineaPedido findSqlByIds(@Param("id_pedido") int id_pedido, @Param("id_producto") int id_producto);
-    
 }

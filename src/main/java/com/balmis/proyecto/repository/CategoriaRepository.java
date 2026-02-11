@@ -9,8 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.balmis.proyecto.model.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
-    
-    // Optional<Categoria> findByCategoria(String categoria);
 
     // Buscar - Todos
     @Query(value = "SELECT * FROM categorias", nativeQuery = true)

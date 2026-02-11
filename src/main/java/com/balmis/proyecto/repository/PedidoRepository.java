@@ -10,7 +10,7 @@ import com.balmis.proyecto.model.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
     
-        // Buscar - Todos
+    // Buscar - Todos
     @Query(value = "SELECT * FROM pedidos", nativeQuery = true)
     List<Pedido> findSqlAll();
     

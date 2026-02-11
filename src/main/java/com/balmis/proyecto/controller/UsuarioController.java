@@ -7,11 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +38,7 @@ public class UsuarioController {
     // ***************************************************************************
     // CONSULTAS
     // ***************************************************************************
-    // http://localhost:8080/apirestmergesec/users
+    // http://localhost:8080/proyecto/usuarios
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Obtener todos los usuarios", description = "Retorna una lista con todos los usuarios disponibles")
@@ -57,7 +53,7 @@ public class UsuarioController {
                 .body(userService.findAll());
     }
 
-    // http://localhost:8080/apirestmergesec/users/2
+    // http://localhost:8080/proyecto/usuarios/2
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Obtener usuario por ID", description = "Retorna un usuario específico basado en su ID")
@@ -81,7 +77,7 @@ public class UsuarioController {
         }
     }
 
-    // http://localhost:8080/apirestmergesec/users/mayor/7
+    // http://localhost:8080/proyecto/usuarios/mayor/7
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Obtener usuarios mayores de un ID", description = "Retorna una lista con todos los usuarios con ID mayor que un valor")
@@ -96,7 +92,7 @@ public class UsuarioController {
                 .body(userService.findByIdGrThan(id));
     }
 
-    // http://localhost:8080/apirestmergesec/users/count
+    // http://localhost:8080/proyecto/usuarios/count
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Obtener el número de usuarios existentes", description = "Retorna la cantidad de usuarios")
@@ -124,7 +120,7 @@ public class UsuarioController {
     // ***************************************************************************
     // ****************************************************************************
     // INSERT (POST)
-    // http://localhost:8080/apirestmergesec/users
+    // http://localhost:8080/proyecto/usuarios
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Crear un nuevo usuario", description = "Registra un nuevo usuario en el sistema con los datos proporcionados")
@@ -154,7 +150,7 @@ public class UsuarioController {
                     || user.getPassword() == null || user.getPassword().trim().isEmpty()) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'name', 'email' y 'password' son obligatorios");
+                map.put("error", "Los campos 'username', 'email' y 'password' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
@@ -178,7 +174,7 @@ public class UsuarioController {
 
     // ****************************************************************************
     // UPDATE (PUT)
-    // http://localhost:8080/apirestmergesec/users
+    // http://localhost:8080/proyecto/usuarios
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Actualizar un usuario existente", description = "Reemplaza completamente los datos de un usuario identificado por su ID")
@@ -241,7 +237,7 @@ public class UsuarioController {
 
     // ****************************************************************************
     // DELETE
-    // http://localhost:8080/apirestmergesec/users/16
+    // http://localhost:8080/proyecto/usuarios/16
     // ***************************************************************************
     // SWAGGER
     @Operation(summary = "Eliminar usuario por ID", description = "Elimina un usuario específico del sistema")

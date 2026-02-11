@@ -10,7 +10,7 @@ import com.balmis.proyecto.model.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
     
-        // Buscar - Todos
+    // Buscar - Todos
     @Query(value = "SELECT * FROM reviews", nativeQuery = true)
     List<Review> findSqlAll();
     

@@ -19,8 +19,7 @@ public class LineaPedidoId implements Serializable{
     private Producto producto;
 
 
-    
-
+    // Getters & Setters
     public Pedido getPedido(){
         return this.pedido;
     }

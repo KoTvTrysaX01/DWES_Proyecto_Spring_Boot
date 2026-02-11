@@ -16,8 +16,7 @@ public class PedidoService {
     @Autowired
     public PedidoRepository pedidoRepository;
 
-
-        // ************************
+    // ************************
     // CONSULTAS
     // ************************ 
     @Transactional(readOnly = true)
@@ -45,7 +44,7 @@ public class PedidoService {
         return pedidoRepository.findSqlByIdGrThan(num);
     }
     
-        // ************************
+    // ************************
     // ACTUALIZACIONES
     // ************************ 
     @Transactional
