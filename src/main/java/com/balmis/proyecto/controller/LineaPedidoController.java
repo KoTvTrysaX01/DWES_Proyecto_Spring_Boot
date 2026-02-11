@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,11 @@ import com.balmis.proyecto.service.LineaPedidoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @Tag(name = "Lineas de Pedido", description = "API para gestión de lineas de pedido")
 @RestController
@@ -126,7 +129,7 @@ public class LineaPedidoController {
     }
 
 
-        // http://localhost:8080/proyecto/categorias/count
+        // http://localhost:8080/proyecto/lineaspedido/count
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener el número de categorias existentes",
@@ -149,4 +152,63 @@ public class LineaPedidoController {
 
         return response;
     }
+
+        // ***************************************************************************
+    // ACTUALIZACIONES
+    // ***************************************************************************
+    // ****************************************************************************
+    // INSERT (POST)    
+    // http://localhost:8080/proyecto/lineaspedido
+    // ***************************************************************************    
+    // SWAGGER
+    @Operation(summary = "Crear una nueva categoria",
+            description = "Registra una nueva categoria en el sistema con los datos proporcionados")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Categoria creada con éxito", content = @Content()),
+        @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
+    })
+    // ***************************************************************************
+    @PostMapping("")
+    public ResponseEntity<Map<String, Object>> createLineaPedido(
+            @Valid @RequestBody LineaPedido lineaPedido) {
+        ResponseEntity<Map<String, Object>> response;
+
+        if (lineaPedido == null) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("error", "El cuerpo de la solicitud no puede estar vacío");
+
+            response = ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(map);
+        } else {
+
+            if (lineaPedido.getLineaPedidoId() == null
+                    || lineaPedido.getCantidad() > 0
+                    || lineaPedido.getPrecio() == null
+                    ) {
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("error", "Los campos 'categoria' y 'descripcion' son obligatorios");
+
+                response = ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(map);
+            } else {
+                System.out.println(lineaPedido);
+                LineaPedido lineaPedidoPost = lineaPedidoService.save(lineaPedido);
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("mensaje", "Categoria creada con éxito");
+                map.put("insertCategoria", lineaPedidoPost);
+
+                response = ResponseEntity
+                        .status(HttpStatus.CREATED)
+                        .body(map);
+            }
+        }
+
+        return response;
+    }
 }
+
+

@@ -44,13 +44,13 @@ public class LineaPedidoService {
         return lineaPedidoRepository.findSqlUserByIdPedido(id_pedido);
     }
 
-        // ************************
+    // ************************
     // ACTUALIZACIONES
     // ************************ 
-    // @Transactional
-    // public LineaPedido save(LineaPedido lineaPedido) {
-    //     return lineaPedidoRepository.save(lineaPedido);
-    // }
+    @Transactional
+    public LineaPedido save(LineaPedido lineaPedido) {
+        return lineaPedidoRepository.save(lineaPedido);
+    }
 
 
     // @Transactional

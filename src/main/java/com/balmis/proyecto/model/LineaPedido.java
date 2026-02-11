@@ -5,12 +5,8 @@ import java.math.BigDecimal;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
@@ -48,7 +44,7 @@ public class LineaPedido implements Serializable {
     private LineaPedidoId lineaPedidoId;
 
     @Schema(description = "Cantidad del producto del pedido", example = "0")
-    @Min(value = 1, message = "La cantidad mínima es 1")
+    @Min(value = 0, message = "La cantidad mínima es 0")
     @Column(name = "cantidad", nullable = false, unique = false)
     private int cantidad;
 
