@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.balmis.proyecto.model.Mensaje;
-import com.balmis.proyecto.service.MensajeService;
+import com.balmis.proyecto.model.Review;
+import com.balmis.proyecto.service.ReviewService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,108 +26,108 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
-@Tag(name = "Mensajes", description = "API para gestión de mensajes")
+@Tag(name = "Reviews", description = "API para gestión de pedidos")
 @RestController
-@RequestMapping("/mensajes")
-public class MensajeController {
+@RequestMapping("/reviews")
+public class ReviewController {
     
 
     @Autowired
-    private MensajeService mensajeService;
+    private ReviewService reviewService;
 
     // ***************************************************************************
     // CONSULTAS
     // ***************************************************************************
-    // http://localhost:8080/proyecto/mensajes
+    // http://localhost:8080/proyecto/pedidos
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener todos los mensajes",
-            description = "Retorna una lista con todos los mensajes disponibles")
+    @Operation(summary = "Obtener todos los pedidos",
+            description = "Retorna una lista con todos los pedidos disponibles")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Mensajes obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "pedidos obtenidos con éxito")
     })
     // ***************************************************************************    
     @GetMapping("")
-    public ResponseEntity<List<Mensaje>> showMensajes() {
+    public ResponseEntity<List<Review>> showReviews() {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(mensajeService.findAll());
+                .body(reviewService.findAll());
     }
 
-    // http://localhost:8080/proyecto/mensajes/2
+    // http://localhost:8080/proyecto/pedidos/2
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener mensaje por ID",
-            description = "Retorna un mensaje específico basado en su ID")
+    @Operation(summary = "Obtener Pedido por ID",
+            description = "Retorna un Pedido especifico basado en su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Mensaje encontrado"),
-        @ApiResponse(responseCode = "404", description = "Mensaje no encontrado", content = @Content())
+        @ApiResponse(responseCode = "200", description = "Pedido encontrado"),
+        @ApiResponse(responseCode = "404", description = "Pedido no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @GetMapping("/{id}")
-    public ResponseEntity<Mensaje> detailsMensaje(@PathVariable int id) {
-        Mensaje mensaje = mensajeService.findById(id);
+    public ResponseEntity<Review> detailsReview(@PathVariable int id) {
+        Review review = reviewService.findById(id);
 
-        if (mensaje == null) {
+        if (review == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(null);  // 404 Not Found
         } else {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(mensaje);
+                    .body(review);
         }
     }
 
-    // http://localhost:8080/proyecto/mensajes/mayor/7
+    // http://localhost:8080/proyecto/reviews/mayor/7
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener mensajes mayores de un ID",
-            description = "Retorna una lista con todos los mensajes con ID mayor que un valor")
+    @Operation(summary = "Obtener reviews mayores de un ID",
+            description = "Retorna una lista con todos los reviews con ID mayor que un valor")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Mensajes obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "reviews obtenidos con éxito")
     })
     // ***************************************************************************    
     @GetMapping("/mayor/{id}")
-    public ResponseEntity<List<Mensaje>> showMensajesMayores(@PathVariable int id) {
+    public ResponseEntity<List<Review>> showReviewsMayores(@PathVariable int id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(mensajeService.findByIdGrThan(id));
+                .body(reviewService.findByIdGrThan(id));
     }
 
-
-    // http://localhost:8080/proyecto/mensajes/titulo/miTitulo
+    // http://localhost:8080/proyecto/reviews/user/7
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener mensajes mayores de un ID",
-            description = "Retorna una lista con todos los mensajes con ID mayor que un valor")
+    @Operation(summary = "Obtener reviews de un usuario",
+            description = "Retorna una lista con todos los reviews de un Usuario")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Mensajes obtenidos con éxito")
+        @ApiResponse(responseCode = "200", description = "reviews obtenidos con éxito")
     })
     // ***************************************************************************    
-    @GetMapping("/titulo/{titulo}")
-    public ResponseEntity<Mensaje> showMensajesPorTitulo(@PathVariable String titulo) {
+    @GetMapping("/user/{user_id}")
+    public ResponseEntity<List<Review>> showReviewUsuario(@PathVariable int user_id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(mensajeService.findByTitulo(titulo));
+                .body(reviewService.findByUserId(user_id));
     }
 
-    // http://localhost:8080/proyecto/mensajes/count
+
+    // http://localhost:8080/proyecto/reviews/count
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Obtener el número de mensajes existentes",
-            description = "Retorna la cantidad de mensajes")
+    @Operation(summary = "Obtener el número de reviews existentes",
+            description = "Retorna la cantidad de reviews")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Número de mensajes obtenidos con éxito", content = @Content())
+        @ApiResponse(responseCode = "200", description = "Número de reviews obtenidos con éxito", content = @Content())
     })
     // ***************************************************************************    
     @GetMapping("/count")
-    public ResponseEntity<Map<String, Object>> countMensajes() {
+    public ResponseEntity<Map<String, Object>> countpedidos() {
 
         ResponseEntity<Map<String, Object>> response = null;
 
         Map<String, Object> map = new HashMap<>();
-        map.put("mensajes", mensajeService.count());
+        map.put("pedidos", reviewService.count());
 
         response = ResponseEntity
                 .status(HttpStatus.OK)
@@ -142,23 +142,23 @@ public class MensajeController {
     // ***************************************************************************
     // ****************************************************************************
     // INSERT (POST)    
-    // http://localhost:8080/proyecto/mensajes
+    // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Crear un nuev mensaje",
-            description = "Registra un nuevo mensaje en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear una nueva Pedido",
+            description = "Registra una nueva Pedido en el sistema con los datos proporcionados")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Mensaje creado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "201", description = "Pedido creada con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
     })
     // ***************************************************************************
     @PostMapping("")
-    public ResponseEntity<Map<String, Object>> createMensaje(
-            @Valid @RequestBody Mensaje mensaje) {
+    public ResponseEntity<Map<String, Object>> createReview(
+            @Valid @RequestBody Review review) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        if (mensaje == null) {
+        if (review == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "El cuerpo de la solicitud no puede estar vacío");
 
@@ -167,25 +167,24 @@ public class MensajeController {
                     .body(map);
         } else {
 
-            if (mensaje.getTitulo() == null || mensaje.getTitulo().trim().isEmpty()
-                    || mensaje.getMensaje() == null || mensaje.getMensaje().trim().isEmpty()
-                    || mensaje.getEmail() == null || mensaje.getEmail().trim().isEmpty()
-                    || mensaje.getPost_date() == null
+            if (review.getReview() == null || review.getReview().trim().isEmpty()
+                    || review.getReview_date() == null
+                    || review.getUsuario() == null
                     ) {
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Los campos 'mensaje' y 'descripcion' son obligatorios");
+                map.put("error", "Los campos 'Pedido' y 'descripcion' son obligatorios");
 
                 response = ResponseEntity
                         .status(HttpStatus.BAD_REQUEST)
                         .body(map);
             } else {
-                System.out.println(mensaje);
-                Mensaje mensajePost = mensajeService.save(mensaje);
+                System.out.println(review);
+                Review reviewPost = reviewService.save(review);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Mensaje creado con éxito");
-                map.put("insertMensaje", mensajePost);
+                map.put("mensaje", "Review creada con éxito");
+                map.put("insertReview", reviewPost);
 
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
@@ -196,61 +195,58 @@ public class MensajeController {
         return response;
     }
 
-    // ****************************************************************************
+        // ****************************************************************************
     // UPDATE (PUT)
-    // http://localhost:8080/proyecto/mensajes
+    // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Actualizar un mensaje existente",
-            description = "Reemplaza completamente los datos de un mensaje identificado por su ID")
+    @Operation(summary = "Actualizar un Review existente",
+            description = "Reemplaza completamente los datos de unu Review identificado por su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Mensaje actualizado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "201", description = "Review actualizado con éxito", content = @Content()),
         @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Mensaje no encontrada", content = @Content())
+        @ApiResponse(responseCode = "404", description = "Review no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @PutMapping("")
-    public ResponseEntity<Map<String, Object>> updateMensaje(
-            @Valid @RequestBody Mensaje mensajeUpdate) {
+    public ResponseEntity<Map<String, Object>> updatePedido(
+            @Valid @RequestBody Review reviewUpdate) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        if (mensajeUpdate == null) {
+        if (reviewUpdate == null) {
             Map<String, Object> map = new HashMap<>();
             map.put("error", "El cuerpo de la solicitud no puede estar vacío");
 
             response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(map);
         } else {
-            int id = mensajeUpdate.getId();
-            Mensaje existingMensaje = mensajeService.findById(id);
+            int id = reviewUpdate.getId();
+            Review existingReview = reviewService.findById(id);
 
-            if (existingMensaje == null) {
+            if (existingReview == null) {
                 Map<String, Object> map = new HashMap<>();
-                map.put("error", "Mensaje no encontrado");
+                map.put("error", "Pedido no encontrado");
                 map.put("id", id);
 
                 response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
             } else {
 
                 // Actualizar campos si están presentes
-                if (mensajeUpdate.getTitulo() != null) {
-                    existingMensaje.setTitulo(mensajeUpdate.getTitulo());
+                if (reviewUpdate.getReview() != null) {
+                    existingReview.setReview(reviewUpdate.getReview());
                 }
-                if (mensajeUpdate.getMensaje() != null) {
-                    existingMensaje.setMensaje(mensajeUpdate.getMensaje());
+                if (reviewUpdate.getReview_date() != null) {
+                    existingReview.setReview_date(reviewUpdate.getReview_date());
                 }
-                if (mensajeUpdate.getEmail() != null) {
-                    existingMensaje.setEmail(mensajeUpdate.getEmail());
-                }
-                if (mensajeUpdate.getPost_date() != null) {
-                    existingMensaje.setPost_date(mensajeUpdate.getPost_date());
+                if (reviewUpdate.getUsuario() != null) {
+                    existingReview.setUsuario(reviewUpdate.getUsuario());
                 }              
 
-                Mensaje mensajePut = mensajeService.save(existingMensaje);
+                Review reviewPut = reviewService.save(existingReview);
 
                 Map<String, Object> map = new HashMap<>();
-                map.put("mensaje", "Mensaje actualizado con éxito");
-                map.put("updatedMensaje", mensajePut);
+                map.put("mensaje", "Review actualizada con éxito");
+                map.put("updatedReview", reviewPut);
 
                 response = ResponseEntity.status(HttpStatus.OK).body(map);
             }
@@ -262,40 +258,41 @@ public class MensajeController {
 
     // ****************************************************************************
     // DELETE
-    // http://localhost:8080/proyecto/mensajes/16
+    // http://localhost:8080/proyecto/reviews/16
     // ***************************************************************************    
     // SWAGGER
-    @Operation(summary = "Eliminar mensaje por ID",
-            description = "Elimina un mensaje específico del sistema")
+    @Operation(summary = "Eliminar review por ID",
+            description = "Elimina un review especifico del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Mensaje eliminado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Mensaje no encontrado", content = @Content())
+        @ApiResponse(responseCode = "201", description = "Review eliminado con éxito", content = @Content()),
+        @ApiResponse(responseCode = "404", description = "Review no encontrado", content = @Content())
     })
     // ***************************************************************************    
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteMensaje(@PathVariable int id) {
+    public ResponseEntity<Map<String, Object>> deletePedido(@PathVariable int id) {
 
         ResponseEntity<Map<String, Object>> response;
 
-        Mensaje existingMensaje = mensajeService.findById(id);
-        if (existingMensaje == null) {
+        Review existingReview = reviewService.findById(id);
+        if (existingReview == null) {
             Map<String, Object> map = new HashMap<>();
-            map.put("error", "Mensaje no encontrado");
+            map.put("error", "Pedido no encontrado");
             map.put("id", id);
 
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(map);
         } else {
 
-            mensajeService.deleteById(id);
+            reviewService.deleteById(id);
 
             Map<String, Object> map = new HashMap<>();
-            map.put("mensaje", "Mensaje eliminado con éxito");
-            map.put("deletedMensaje", existingMensaje);
+            map.put("mensaje", "Review eliminado con éxito");
+            map.put("deletedPedido", existingReview);
 
             response = ResponseEntity.status(HttpStatus.OK).body(map);
         }
         return response;
     }
 }
+
 
 

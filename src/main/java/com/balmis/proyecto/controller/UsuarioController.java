@@ -7,6 +7,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,14 +43,13 @@ public class UsuarioController {
     // CONSULTAS
     // ***************************************************************************
     // http://localhost:8080/apirestmergesec/users
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener todos los usuarios",
-            description = "Retorna una lista con todos los usuarios disponibles")
+    @Operation(summary = "Obtener todos los usuarios", description = "Retorna una lista con todos los usuarios disponibles")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Usuarios obtenidos con éxito")
+            @ApiResponse(responseCode = "200", description = "Usuarios obtenidos con éxito")
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @GetMapping("")
     public ResponseEntity<List<Usuario>> showUsers() {
         return ResponseEntity
@@ -54,15 +58,14 @@ public class UsuarioController {
     }
 
     // http://localhost:8080/apirestmergesec/users/2
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener usuario por ID",
-            description = "Retorna un usuario específico basado en su ID")
+    @Operation(summary = "Obtener usuario por ID", description = "Retorna un usuario específico basado en su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
-        @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> detailsUser(@PathVariable int id) {
         Usuario usu = userService.findById(id);
@@ -70,7 +73,7 @@ public class UsuarioController {
         if (usu == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body(null);  // 404 Not Found
+                    .body(null); // 404 Not Found
         } else {
             return ResponseEntity
                     .status(HttpStatus.OK)
@@ -79,14 +82,13 @@ public class UsuarioController {
     }
 
     // http://localhost:8080/apirestmergesec/users/mayor/7
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener usuarios mayores de un ID",
-            description = "Retorna una lista con todos los usuarios con ID mayor que un valor")
+    @Operation(summary = "Obtener usuarios mayores de un ID", description = "Retorna una lista con todos los usuarios con ID mayor que un valor")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Usuarios obtenidos con éxito")
+            @ApiResponse(responseCode = "200", description = "Usuarios obtenidos con éxito")
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @GetMapping("/mayor/{id}")
     public ResponseEntity<List<Usuario>> showUsersMayores(@PathVariable int id) {
         return ResponseEntity
@@ -95,14 +97,13 @@ public class UsuarioController {
     }
 
     // http://localhost:8080/apirestmergesec/users/count
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Obtener el número de usuarios existentes",
-            description = "Retorna la cantidad de usuarios")
+    @Operation(summary = "Obtener el número de usuarios existentes", description = "Retorna la cantidad de usuarios")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Número de usuarios obtenidos con éxito", content = @Content())
+            @ApiResponse(responseCode = "200", description = "Número de usuarios obtenidos con éxito", content = @Content())
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @GetMapping("/count")
     public ResponseEntity<Map<String, Object>> countUsers() {
 
@@ -122,17 +123,16 @@ public class UsuarioController {
     // ACTUALIZACIONES
     // ***************************************************************************
     // ****************************************************************************
-    // INSERT (POST)    
+    // INSERT (POST)
     // http://localhost:8080/apirestmergesec/users
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Crear un nuevo usuario",
-            description = "Registra un nuevo usuario en el sistema con los datos proporcionados")
+    @Operation(summary = "Crear un nuevo usuario", description = "Registra un nuevo usuario en el sistema con los datos proporcionados")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Usuario creado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
+            @ApiResponse(responseCode = "201", description = "Usuario creado con éxito", content = @Content()),
+            @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos", content = @Content())
     })
-    // ***************************************************************************    
+    // ***************************************************************************
 
     @PostMapping("")
     public ResponseEntity<Map<String, Object>> createUser(
@@ -151,8 +151,7 @@ public class UsuarioController {
 
             if (user.getUsername() == null || user.getUsername().trim().isEmpty()
                     || user.getEmail() == null || user.getEmail().trim().isEmpty()
-                    || user.getPassword() == null || user.getPassword().trim().isEmpty()
-                    ) {
+                    || user.getPassword() == null || user.getPassword().trim().isEmpty()) {
 
                 Map<String, Object> map = new HashMap<>();
                 map.put("error", "Los campos 'name', 'email' y 'password' son obligatorios");
@@ -161,9 +160,9 @@ public class UsuarioController {
                         .status(HttpStatus.BAD_REQUEST)
                         .body(map);
             } else {
-                System.out.println(user);
+                BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                user.setPassword(encoder.encode(user.getPassword()));
                 Usuario usuPost = userService.save(user);
-
                 Map<String, Object> map = new HashMap<>();
                 map.put("mensaje", "Usuario creado con éxito");
                 map.put("insertUser", usuPost);
@@ -180,16 +179,15 @@ public class UsuarioController {
     // ****************************************************************************
     // UPDATE (PUT)
     // http://localhost:8080/apirestmergesec/users
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Actualizar un usuario existente",
-            description = "Reemplaza completamente los datos de un usuario identificado por su ID")
+    @Operation(summary = "Actualizar un usuario existente", description = "Reemplaza completamente los datos de un usuario identificado por su ID")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Usuario actualizado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
+            @ApiResponse(responseCode = "201", description = "Usuario actualizado con éxito", content = @Content()),
+            @ApiResponse(responseCode = "400", description = "Datos de actualización inválidos", content = @Content()),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @PutMapping("")
     public ResponseEntity<Map<String, Object>> updateUser(
             @Valid @RequestBody Usuario userUpdate) {
@@ -226,7 +224,7 @@ public class UsuarioController {
                 existingUser.setAdministrador(userUpdate.isAdministrador());
                 existingUser.setUsuario(userUpdate.isUsuario());
                 existingUser.setInvitado(userUpdate.isInvitado());
-                existingUser.setActivado(userUpdate.isActivado());                
+                existingUser.setActivado(userUpdate.isActivado());
 
                 Usuario usuPut = userService.save(existingUser);
 
@@ -244,15 +242,14 @@ public class UsuarioController {
     // ****************************************************************************
     // DELETE
     // http://localhost:8080/apirestmergesec/users/16
-    // ***************************************************************************    
+    // ***************************************************************************
     // SWAGGER
-    @Operation(summary = "Eliminar usuario por ID",
-            description = "Elimina un usuario específico del sistema")
+    @Operation(summary = "Eliminar usuario por ID", description = "Elimina un usuario específico del sistema")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Usuario eliminado con éxito", content = @Content()),
-        @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
+            @ApiResponse(responseCode = "201", description = "Usuario eliminado con éxito", content = @Content()),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado", content = @Content())
     })
-    // ***************************************************************************    
+    // ***************************************************************************
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> deleteUser(@PathVariable int id) {
 
@@ -279,4 +276,3 @@ public class UsuarioController {
     }
 
 }
-

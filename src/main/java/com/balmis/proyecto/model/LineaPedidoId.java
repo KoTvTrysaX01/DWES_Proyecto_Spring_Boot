@@ -12,9 +12,28 @@ public class LineaPedidoId implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "id_pedido", referencedColumnName = "id")
-    public Pedido pedido;
+    private Pedido pedido;
 
     @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id")
-    public Producto producto;
+    private Producto producto;
+
+
+    
+
+    public Pedido getPedido(){
+        return this.pedido;
+    }
+
+    public void setPedido(Pedido pedido){
+        this.pedido = pedido;
+    }
+
+    public Producto getProducto(){
+        return this.producto;
+    }
+
+    public void setProducto(Producto producto){
+        this.producto = producto;
+    }
 }

@@ -32,7 +32,7 @@ public interface LineaPedidoRepository extends JpaRepository<LineaPedido, LineaP
     @Query(value = "SELECT users_security.* FROM ((lineas_pedido INNER JOIN pedidos ON :id_pedido = pedidos.id) INNER JOIN users_security ON pedidos.user_id = users_security.id)", nativeQuery = true)
     Usuario findSqlUserByIdPedido(@Param("id_pedido") int id_pedido);
 
-    // @Query(value = "SELECT * FROM lineas_pedido WHERE lineaPedidoId.id = :id_pedido AND id_producto = :id_producto", nativeQuery = true)
-    // LineaPedido findSqlByIds(@Param("lineaPedidoId") LineaPedidoId lineaPedidoId.);
+    @Query(value = "SELECT * FROM lineas_pedido WHERE id_pedido = :id_pedido AND id_producto = :id_producto", nativeQuery = true)
+    LineaPedido findSqlByIds(@Param("id_pedido") int id_pedido, @Param("id_producto") int id_producto);
     
 }

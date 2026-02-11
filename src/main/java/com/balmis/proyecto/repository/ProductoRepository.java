@@ -1,7 +1,6 @@
 package com.balmis.proyecto.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,9 +9,6 @@ import org.springframework.data.repository.query.Param;
 import com.balmis.proyecto.model.Producto;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
-    
-
-    // Optional<Producto> findByDescrip(String descripcion);
     
     // Buscar - Todos
     @Query(value = "SELECT * FROM productos", nativeQuery = true)

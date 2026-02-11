@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.balmis.proyecto.model.Categoria;
 import com.balmis.proyecto.model.LineaPedido;
+import com.balmis.proyecto.model.LineaPedidoId;
+import com.balmis.proyecto.model.Pedido;
 import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.repository.LineaPedidoRepository;
 
@@ -19,6 +22,12 @@ public class LineaPedidoService {
     // ************************
     // CONSULTAS
     // ************************ 
+
+    @Transactional(readOnly = true)
+    public LineaPedido findByIds(int id_pedido, int id_producto){
+        return lineaPedidoRepository.findSqlByIds(id_pedido, id_producto);
+    }
+
     @Transactional(readOnly = true)
     public List<LineaPedido> findAll(){
         return lineaPedidoRepository.findAll();
@@ -53,27 +62,33 @@ public class LineaPedidoService {
     }
 
 
-    // @Transactional
-    // public LineaPedido update(LineaPedidoId lineaPedidoId, LineaPedido lineaPedidoDetails) {
-    //     LineaPedido lineaPedido = lineaPedidoRepository.findSqlByIds(lineaPedidoId)
-    //         .orElseThrow(() -> new RuntimeException("LineaPedido no encontrado"));
+    @Transactional
+    public LineaPedido update(LineaPedidoId lineaPedidoId, LineaPedido lineaPedidoDetails) {
+        LineaPedido lineaPedido = lineaPedidoRepository.findById(lineaPedidoId)
+            .orElseThrow(() -> new RuntimeException("LineaPedido no encontrado"));
         
-    //     if (lineaPedidoDetails.getCantidad() > 0) {
-    //         lineaPedido.setCantidad(lineaPedidoDetails.getCantidad());
-    //     }
-    //     if (lineaPedidoDetails.getPrecio() != null) {
-    //         lineaPedido.setPrecio(lineaPedidoDetails.getPrecio());
-    //     }
-        
-    //     return lineaPedidoRepository.save(lineaPedido);
-    // }
+        if (lineaPedidoDetails.getLineaPedidoId().getPedido() != null) {
+            lineaPedido.getLineaPedidoId().setPedido(lineaPedidoDetails.getLineaPedidoId().getPedido());
+        }
+        if (lineaPedido.getLineaPedidoId().getProducto() != null) {
+            lineaPedido.getLineaPedidoId().setProducto(lineaPedidoDetails.getLineaPedidoId().getProducto());
+        }
+        if (lineaPedidoDetails.getCantidad() != 0) {
+            lineaPedido.setCantidad(lineaPedidoDetails.getCantidad());
+        }
+        if (lineaPedidoDetails.getPrecio()  != null) {
+            lineaPedido.setPrecio(lineaPedidoDetails.getPrecio());
+        }
+        return lineaPedidoRepository.save(lineaPedido);
+    }
+
     
-    // @Transactional
-    // public void deleteById(int id) {
-    //     if (!lineaPedidoRepository.existsByIds(id_pedido, id_producto)) {
-    //         throw new RuntimeException("LineaPedido no encontrado");
-    //     }
-    //     lineaPedidoRepository.deleteByIds(id_pedido, id_producto);
-    // }
+    @Transactional
+    public void deleteById(LineaPedidoId lineaPedidoId) {
+        if (!lineaPedidoRepository.existsById(lineaPedidoId)) {
+            throw new RuntimeException("LineaPedido no encontrado");
+        }
+        lineaPedidoRepository.deleteById(lineaPedidoId);
+    }
     
 }

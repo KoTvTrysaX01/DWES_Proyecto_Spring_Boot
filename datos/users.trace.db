@@ -1,3 +1,0 @@
-2026-02-10 23:51:36.075724+01:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT users_security.* FROM ((lineas_pedido INNER JOIN pedidos ON ? = pedidos.id) INNER JOIN users_security ON pedidos.user_id = users_security.id[*]"; expected "(, ., [, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, RIGHT, LEFT, INNER, JOIN, CROSS, NATURAL, )"; SQL statement:
-SELECT users_security.* FROM ((lineas_pedido INNER JOIN pedidos ON ? = pedidos.id) INNER JOIN users_security ON pedidos.user_id = users_security.id [42001-240]
