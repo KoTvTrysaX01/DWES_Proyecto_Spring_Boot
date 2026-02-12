@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS mensajes(
 CREATE TABLE IF NOT EXISTS reviews(
     id          INT AUTO_INCREMENT PRIMARY KEY,
     review      VARCHAR(300) NOT NULL,
-    review_date   DATE NOT NULL,
+    review_date DATE NOT NULL,
     user_id     INT,
-    FOREIGN KEY (user_id) REFERENCES users_security(id) ON DELETE SET NULL
+    producto_id INT,
+    FOREIGN KEY (user_id) REFERENCES users_security(id) ON DELETE SET NULL,
+    FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE SET NULL
 );

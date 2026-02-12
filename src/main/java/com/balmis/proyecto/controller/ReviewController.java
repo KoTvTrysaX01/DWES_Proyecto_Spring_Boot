@@ -99,7 +99,7 @@ public class ReviewController {
     // ***************************************************************************    
     // SWAGGER
     @Operation(summary = "Obtener reviews de un usuario",
-            description = "Retorna una lista con todos los reviews de un Usuario")
+            description = "Retorna una lista con todos los reviews de un usuario")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "reviews obtenidos con éxito")
     })
@@ -109,6 +109,22 @@ public class ReviewController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(reviewService.findByUserId(user_id));
+    }
+
+    // http://localhost:8080/proyecto/reviews/producto/7
+    // ***************************************************************************    
+    // SWAGGER
+    @Operation(summary = "Obtener reviews de un producto",
+            description = "Retorna una lista con todos los reviews de un producto")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "reviews obtenidos con éxito")
+    })
+    // ***************************************************************************    
+    @GetMapping("/producto/{producto_id}")
+    public ResponseEntity<List<Review>> showReviewProducto(@PathVariable int producto_id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(reviewService.findByProductoId(producto_id));
     }
 
 
@@ -195,7 +211,7 @@ public class ReviewController {
         return response;
     }
 
-        // ****************************************************************************
+    // ****************************************************************************
     // UPDATE (PUT)
     // http://localhost:8080/proyecto/reviews
     // ***************************************************************************    

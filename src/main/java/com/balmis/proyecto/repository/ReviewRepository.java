@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.balmis.proyecto.model.Producto;
 import com.balmis.proyecto.model.Review;
+import com.balmis.proyecto.model.Usuario;
 
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
     
@@ -22,6 +24,10 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     @Query(value = "SELECT * FROM reviews WHERE user_id = :user_id", nativeQuery = true)
     List<Review> findSqlByIdUsuario(@Param("user_id") int user_id);
 
+        // Buscar - Por ID de Producto
+    @Query(value = "SELECT * FROM reviews WHERE producto_id = :producto_id", nativeQuery = true)
+    List<Review> findSqlByIdProducto(@Param("producto_id") int producto_id);
+
     // Buscar - Contar todos
     @Query(value = "SELECT COUNT(*) as cantidad FROM reviews", nativeQuery = true)
     Long countSql();    
@@ -29,4 +35,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     // Buscar - Todos menores que Num
     @Query(value = "SELECT * FROM reviews WHERE id > :num", nativeQuery = true)
     List<Review> findSqlByIdGrThan(@Param("num") int num);
+
 }

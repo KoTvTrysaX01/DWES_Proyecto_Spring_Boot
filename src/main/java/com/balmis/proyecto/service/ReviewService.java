@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.balmis.proyecto.model.Producto;
 import com.balmis.proyecto.model.Review;
+import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.repository.ReviewRepository;
 
 @Service
@@ -30,8 +32,13 @@ public class ReviewService {
     }
 
     @Transactional(readOnly = true)
-    public List<Review> findByUserId(int id){
-        return reviewRepository.findSqlByIdUsuario(id);
+    public List<Review> findByUserId(int user_id){
+        return reviewRepository.findSqlByIdUsuario(user_id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Review> findByProductoId(int producto_id){
+        return reviewRepository.findSqlByIdProducto(producto_id);
     }
 
     @Transactional(readOnly = true) 
@@ -44,7 +51,7 @@ public class ReviewService {
         return reviewRepository.findSqlByIdGrThan(num);
     }
     
-        // ************************
+    // ************************
     // ACTUALIZACIONES
     // ************************ 
     @Transactional
@@ -67,6 +74,10 @@ public class ReviewService {
         if (reviewDetails.getUsuario()  != null) {
             review.setUsuario(reviewDetails.getUsuario());
         }
+        if (reviewDetails.getProducto()  != null) {
+            review.setProducto(reviewDetails.getProducto());
+        }
+
         return reviewRepository.save(review);
     }
     

@@ -59,4 +59,9 @@ public class Review implements Serializable{
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonIgnoreProperties("reviews")  
     private Usuario usuario;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("reviews")  
+    private Producto producto;
 }

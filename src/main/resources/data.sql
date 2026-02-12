@@ -66,8 +66,8 @@ INSERT INTO mensajes (id, titulo, mensaje, email, post_date) VALUES (3, '3-Titul
 ALTER TABLE mensajes ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM mensajes);
 
 
-INSERT INTO reviews (id, review, review_date, user_id) VALUES (1, 'This is very good', '2025-11-01', 1);
-INSERT INTO reviews (id, review, review_date, user_id) VALUES (2, 'Indeed it is', '2025-11-01', 2);
-INSERT INTO reviews (id, review, review_date, user_id) VALUES (3, 'Could have been better', '2025-11-01', 3);
+INSERT INTO reviews (id, review, review_date, user_id, producto_id) VALUES (1, 'This is very good', '2025-11-01', 1, 1);
+INSERT INTO reviews (id, review, review_date, user_id, producto_id) VALUES (2, 'Indeed it is', '2025-11-01', 2, 2);
+INSERT INTO reviews (id, review, review_date, user_id, producto_id) VALUES (3, 'Could have been better', '2025-11-01', 3, 3);
 
 ALTER TABLE reviews ALTER COLUMN id RESTART WITH (SELECT COALESCE(MAX(id), 0) + 1 FROM reviews);
