@@ -1,7 +1,7 @@
 package com.balmis.proyecto.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -16,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -51,9 +52,9 @@ public class Review implements Serializable{
     private String review;
 
     @Schema(description = "La fecha del review", example = "2015-01-11")
-    @NotBlank(message = "La fecha es obligatoria")
+    @NotNull(message = "La fecha es obligatoria")
     @Column(name = "review_date", nullable = false, unique = false)
-    private Date review_date;
+    private LocalDate review_date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")

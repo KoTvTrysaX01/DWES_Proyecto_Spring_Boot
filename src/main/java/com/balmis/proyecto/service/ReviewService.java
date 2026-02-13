@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.balmis.proyecto.model.Producto;
 import com.balmis.proyecto.model.Review;
-import com.balmis.proyecto.model.Usuario;
 import com.balmis.proyecto.repository.ReviewRepository;
 
 @Service

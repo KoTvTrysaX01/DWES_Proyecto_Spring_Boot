@@ -1,0 +1,2235 @@
+{
+  "info": {
+    "_postman_id": "637cdfd1-f54c-4fbf-a32c-ba7fc2090d82",
+    "name": "SpringBoot Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47460468",
+    "_collection_link": "https://go.postman.co/collection/47460468-637cdfd1-f54c-4fbf-a32c-ba7fc2090d82?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "/api/auth/user",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/api/auth/user",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "api",
+                "auth",
+                "user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/api/auth/login (user)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"vadim\",\r\n    \"password\": \"1234\"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/api/auth/login (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"5678\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/api/auth/login (error)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"juan\",\r\n    \"password\": \"1234\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/api/auth/logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "default"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "default"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/api/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "api",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categorias",
+      "item": [
+        {
+          "name": "/categorias",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias/mayor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias",
+                "mayor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cookies\",\n  \"descripcion\": \"Cookies buenos\",\n  \"imagen\": \"./directorio/imagen.png\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias/4",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 4,\n  \"categoria\": \"Cookies123\",\n  \"descripcion\": \"Cookies buenos\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/categorias/4",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/categorias/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "categorias",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "/productos",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/mayor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "mayor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/categoria/3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/categoria/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "categoria",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 0,\n    \"nombre\": \"4-ice_cream\",\n    \"descripcion\": \"descripcion\",\n    \"precio\": 4.99,\n    \"stock\": true,\n    \"imagen\": \"./4-ice_cream.png\",\n    \"categoria\": {\n        \"id\": 1,\n        \"categoria\": \"ice_cream\",\n        \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\n        \"imagen\": \"./ice_creams.png\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/10",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "10"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 10,\n    \"nombre\": \"4-ice_cream123\",\n    \"descripcion\": \"descripcion\",\n    \"precio\": 4.99,\n    \"stock\": true,\n    \"imagen\": \"./4-ice_cream.png\",\n    \"categoria\": {\n        \"id\": 1,\n        \"categoria\": \"ice_cream\",\n        \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\n        \"imagen\": \"./ice_creams.png\"\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/productos/",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/productos/10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "productos",
+                "10"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "/usuarios",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios/mayor/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios",
+                "mayor",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"username\": \"juan\",\n  \"email\": \"juan@balmis.com\",\n  \"password\": \"mynewpassword\",\n  \"administrador\": true,\n  \"usuario\": true,\n  \"invitado\": false,\n  \"activado\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios/5",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 5,\n  \"username\": \"juan123\",\n  \"email\": \"juan123@balmis.com\",\n  \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC\",\n  \"administrador\": false,\n  \"usuario\": true,\n  \"invitado\": true,\n  \"activado\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/usuarios/5",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/usuarios/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "usuarios",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "/pedidos",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/mayor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "mayor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/user/3",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/user/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "user",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"pedido\": \"Ice cream, Smoothie\",\n  \"precio_total\": 151.99,\n  \"tel\": \"123456789\",\n  \"direccion\": \"calle MiCalle\",\n  \"pedido_date\": \"2015-11-11\",\n  \"usuario\": {\n        \"id\": 1,\n        \"username\": \"reis\",\n        \"email\": \"reis@balmis.com\",\n        \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\n        \"administrador\": true,\n        \"usuario\": true,\n        \"invitado\": false,\n        \"activado\": true\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/7",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 7,\n  \"pedido\": \"Ice cream123, Smoothie123\",\n  \"precio_total\": 151.99,\n  \"tel\": \"123456789\",\n  \"direccion\": \"calle MiCalle\",\n  \"pedido_date\": \"2015-11-11\",\n  \"usuario\": {\n        \"id\": 1,\n        \"username\": \"reis\",\n        \"email\": \"reis@balmis.com\",\n        \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\n        \"administrador\": true,\n        \"usuario\": true,\n        \"invitado\": false,\n        \"activado\": true\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/pedidos/7",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/pedidos/7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "pedidos",
+                "7"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "/reviews",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/mayor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "mayor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/user/3",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/user/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "user",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/producto/3",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/producto/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "producto",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"review\": \"My new review\",\n  \"review_date\": \"2015-11-11\",\n  \"usuario\": {\n        \"id\": 1,\n        \"username\": \"reis\",\n        \"email\": \"reis@balmis.com\",\n        \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\n        \"administrador\": true,\n        \"usuario\": true,\n        \"invitado\": false,\n        \"activado\": true\n    },\n    \"producto\": {\n            \"id\": 3,\n            \"nombre\": \"3-ice_cream\",\n            \"descripcion\": \"descripcion\",\n            \"precio\": 3.00,\n            \"stock\": false,\n            \"imagen\": \"./3-ice_cream.png\",\n            \"categoria\": {\n                \"id\": 1,\n                \"categoria\": \"ice_cream\",\n                \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\n                \"imagen\": \"./ice_creams.png\",\n                \"hibernateLazyInitializer\": {}\n            },\n            \"hibernateLazyInitializer\": {}\n        }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/4",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 4,\n    \"review\": \"My new review123\",\n    \"review_date\": \"2015-11-11\",\n    \"usuario\": {\n        \"id\": 1,\n        \"username\": \"reis\",\n        \"email\": \"reis@balmis.com\",\n        \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\n        \"administrador\": true,\n        \"usuario\": true,\n        \"invitado\": false,\n        \"activado\": true,\n        \"hibernateLazyInitializer\": {}\n    },\n    \"producto\": {\n        \"id\": 3,\n        \"nombre\": \"3-ice_cream\",\n        \"descripcion\": \"descripcion\",\n        \"precio\": 3.00,\n        \"stock\": false,\n        \"imagen\": \"./3-ice_cream.png\",\n        \"categoria\": {\n            \"id\": 1,\n            \"categoria\": \"ice_cream\",\n            \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\n            \"imagen\": \"./ice_creams.png\",\n            \"hibernateLazyInitializer\": {}\n        },\n        \"hibernateLazyInitializer\": {}\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/reviews/4",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/reviews/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "reviews",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Mensajes",
+      "item": [
+        {
+          "name": "/mensajes",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes/mayor/2",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes/mayor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes",
+                "mayor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes/titulo/mititulo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes/titulo/1-Titulo",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes",
+                "titulo",
+                "1-Titulo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 0,\n    \"titulo\": \"4-Titulo\",\n    \"mensaje\": \"Mi Mensaje\",\n    \"email\": \"example@gmail.com\",\n    \"post_date\": \"2025-11-01\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 4,\n    \"titulo\": \"4-Titulo123\",\n    \"mensaje\": \"Mi Mensaje123\",\n    \"email\": \"example@gmail.com\",\n    \"post_date\": \"2025-11-01\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/mensajes/4",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"categoria\": \"Cooki2es\",\n  \"descripcion\": \"Ordenador portátil muy muy bueno\",\n  \"imagen\": \"./directorio/imagen.png\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/mensajes/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "mensajes",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lineas de Pedido",
+      "item": [
+        {
+          "name": "/lineaspedido",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/1/3",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/4/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "4",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/pedido/2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/pedido/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "pedido",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/producto/3",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/producto/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "producto",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/pedido/user/4",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/pedido/user/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "pedido",
+                "user",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido Doesn't work",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"lineaPedidoId\": {\n        \"pedido\": {\n            \"id\": 1,\n            \"pedido\": \"1-ice_cream x 2-ice_cream\",\n            \"precio_total\": 13.00,\n            \"tel\": \"123456789\",\n            \"direccion\": \"Mi direccion\",\n            \"pedido_date\": \"2015-11-30T23:00:00.000Z\",\n            \"usuario\": {\n                \"id\": 1,\n                \"username\": \"reis\",\n                \"email\": \"reis@balmis.com\",\n                \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\n                \"administrador\": true,\n                \"usuario\": true,\n                \"invitado\": false,\n                \"activado\": true\n            }\n        },\n        \"producto\": {\n            \"id\": 2,\n            \"nombre\": \"2-ice_cream\",\n            \"descripcion\": \"descripcion\",\n            \"precio\": 4.00,\n            \"stock\": true,\n            \"imagen\": \"./2-ice_cream.png\",\n            \"categoria\": {\n                \"id\": 1,\n                \"categoria\": \"ice_cream\",\n                \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\n                \"imagen\": \"./ice_creams.png\"\n            }\n        }\n    },\n    \"cantidad\": 4,\n    \"precio\": 5.00\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/pedido/4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/pedido/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "pedido",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido Doesn't work",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"lineaPedidoId\": {\r\n        \"pedido\": {\r\n            \"id\": 1,\r\n            \"pedido\": \"1-ice_cream x 3-ice_cream\",\r\n            \"precio_total\": 13.00,\r\n            \"tel\": \"123456789\",\r\n            \"direccion\": \"Mi direccion\",\r\n            \"pedido_date\": \"2015-11-30T23:00:00.000Z\",\r\n            \"usuario\": {\r\n                \"id\": 1,\r\n                \"username\": \"reis\",\r\n                \"email\": \"reis@balmis.com\",\r\n                \"password\": \"$2a$10$fzcGgF.8xODz7ptkmZC.OeX1Kj5GDI//FhW2sG0vlshW6ZAKJky0e\",\r\n                \"administrador\": true,\r\n                \"usuario\": true,\r\n                \"invitado\": false,\r\n                \"activado\": true,\r\n                \"hibernateLazyInitializer\": {}\r\n            }\r\n        },\r\n        \"producto\": {\r\n            \"id\": 3,\r\n            \"nombre\": \"3-ice_cream\",\r\n            \"descripcion\": \"descripcion\",\r\n            \"precio\": 3.00,\r\n            \"stock\": false,\r\n            \"imagen\": \"./3-ice_cream.png\",\r\n            \"categoria\": {\r\n                \"id\": 1,\r\n                \"categoria\": \"ice_cream\",\r\n                \"descripcion\": \"Es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.\",\r\n                \"imagen\": \"./ice_creams.png\",\r\n                \"hibernateLazyInitializer\": {}\r\n            }\r\n        }\r\n    },\r\n    \"cantidad\": 1,\r\n    \"precio\": 233.99\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/lineaspedido/2/8",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/proyecto/lineaspedido/2/8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "proyecto",
+                "lineaspedido",
+                "2",
+                "8"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

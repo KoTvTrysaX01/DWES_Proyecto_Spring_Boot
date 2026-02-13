@@ -3,6 +3,7 @@ package com.balmis.proyecto.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,6 +19,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -70,9 +72,9 @@ public class Pedido implements Serializable{
     private String direccion;
 
     @Schema(description = "La fecha del pedido", example = "2015-01-11")
-    @NotBlank(message = "La fecha del pedido es obligatoria")
+    @NotNull(message = "La fecha es obligatoria")
     @Column(name = "pedido_date", nullable = false, unique = false)
-    private Date pedido_date;
+    private LocalDate pedido_date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
