@@ -23,13 +23,17 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 // LOMBOK
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString(exclude = "usuario")           // Excluir del toString para evitar recursividad
+@EqualsAndHashCode(exclude = "usuario")  // Excluir de equals y hashCode para evitar recursividad
 
 // SWAGGER
 @Schema(description = "Modelo de Pedido", name="Pedido")

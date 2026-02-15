@@ -20,15 +20,17 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 // LOMBOK
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-// @ToString(exclude = "producto") // Excluir del toString para evitar recursividad
-// @EqualsAndHashCode(exclude = "producto") // Excluir de equals y hashCode para evitar recursividad
+@ToString(exclude = {"usuario", "categoria"}) // Excluir del toString para evitar recursividad
+@EqualsAndHashCode(exclude = {"usuario", "categoria"}) // Excluir de equals y hashCode para evitar recursividad
 
 // SWAGGER
 @Schema(description = "Modelo de Review", name="Review")

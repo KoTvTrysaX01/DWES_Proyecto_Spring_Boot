@@ -85,7 +85,7 @@ public class Producto implements Serializable{
     @JsonIgnoreProperties("productos")  
     private Categoria categoria;
 
-    // @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    // @JsonIgnoreProperties("producto")  
-    // private Set<Review> reviews = new HashSet<>();
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("producto")  
+    private Set<Review> reviews = new HashSet<>();
 }
