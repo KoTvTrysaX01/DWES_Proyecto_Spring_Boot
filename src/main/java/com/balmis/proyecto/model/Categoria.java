@@ -1,25 +1,36 @@
 package com.balmis.proyecto.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 // LOMBOK
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString(exclude = "productos")           // Excluir del toString para evitar recursividad
+@EqualsAndHashCode(exclude = "productos")  // Excluir de equals y hashCode para evitar recursividad
 
 // SWAGGER
 @Schema(description = "Modelo de Categoria", name="Categoria")
@@ -27,7 +38,7 @@ import lombok.NoArgsConstructor;
 // JPA
 @Entity
 @Table(name = "categorias")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Categoria implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -54,4 +65,8 @@ public class Categoria implements Serializable{
     @Size(min=1, max=100, message = "El directorio de la imagen la categoria no puede tener más de 100 caracteres")
     @Column(name = "imagen", nullable = true, unique = false) 
     private String imagen;
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("categoria")  
+    private Set<Producto> productos = new HashSet<>();
 }

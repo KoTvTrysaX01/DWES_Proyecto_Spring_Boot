@@ -27,6 +27,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+// @ToString(exclude = "producto") // Excluir del toString para evitar recursividad
+// @EqualsAndHashCode(exclude = "producto") // Excluir de equals y hashCode para evitar recursividad
 
 // SWAGGER
 @Schema(description = "Modelo de Review", name="Review")

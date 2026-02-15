@@ -70,4 +70,12 @@ public class Usuario implements Serializable {
     @Column(name = "activado", nullable = false, unique = false)
     private boolean activado;
 
+    // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JsonIgnoreProperties("usuario")  
+    // private Set<Review> reviews = new HashSet<>();
+
+    // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JsonIgnoreProperties("usuario")  
+    // private Set<Pedido> pedidos = new HashSet<>();
+
 }

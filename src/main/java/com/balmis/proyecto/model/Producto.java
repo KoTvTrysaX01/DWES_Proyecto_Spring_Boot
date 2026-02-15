@@ -1,12 +1,14 @@
 package com.balmis.proyecto.model;
 
-
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,19 +17,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 // LOMBOK
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString(exclude = {"categoria","reviews"}) // Excluir del toString para evitar recursividad
+@EqualsAndHashCode(exclude = {"categoria","reviews"}) // Excluir de equals y hashCode para evitar recursividad
+
 
 // SWAGGER
 @Schema(description = "Modelo de Producto", name="Producto")
@@ -35,6 +43,7 @@ import lombok.NoArgsConstructor;
 // JPA
 @Entity
 @Table(name = "productos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Producto implements Serializable{
 
     private static final long serialVersionUID = 1L; 
@@ -75,4 +84,8 @@ public class Producto implements Serializable{
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     @JsonIgnoreProperties("productos")  
     private Categoria categoria;
+
+    // @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @JsonIgnoreProperties("producto")  
+    // private Set<Review> reviews = new HashSet<>();
 }
